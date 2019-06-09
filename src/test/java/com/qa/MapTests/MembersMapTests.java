@@ -10,12 +10,13 @@ public class MembersMapTests {
 	
 	private MembersMapRepository mmr;
 	private Members mem1;
-
+	private Members mem2;
 
 	@Before
 	public void setup() {
 	mmr = new MembersMapRepository();
 	mem1 = new Members("Krystal", "Ryan");
+	mem2= new Members("Jack", "Ryan");
 }
 	
 	@Test
@@ -38,5 +39,33 @@ public class MembersMapTests {
 		mmr.getmembersMap().put(1, mem1);
 		mmr.updateMember(1, "{\"memberid\":1,\"firstname\":\"Jack\",\"lastname\":\"Ryan\"}");
 		assertEquals("Jack", mmr.getmembersMap().get(1).getFirstname());
+	}
+	
+	@Test
+	public void removeMemberTest() {
+
+		mmr.getmembersMap().put(1, mem1);
+
+		mmr.deleteMember(1);
+		assertEquals(0, mmr.getmembersMap().size());
+	}
+	
+	@Test
+	public void remove2MembersTest() {
+		mmr.getmembersMap().put(1, mem1);
+		mmr.getmembersMap().put(2, mem2);
+		mmr.deleteMember(1);
+		mmr.deleteMember(2);
+		assertEquals(0, mmr.getmembersMap().size());
+	}
+	
+	@Test
+	public void remove2MembersAnd1ThatDoesntExistTest() {
+		mmr.getmembersMap().put(1, mem1);
+		mmr.getmembersMap().put(2, mem2);
+		mmr.deleteMember(1);
+		mmr.deleteMember(2);
+		mmr.deleteMember(3);
+		assertEquals(0, mmr.getmembersMap().size());
 	}
 }

@@ -30,4 +30,9 @@ public class MembersMapRepository implements MembersRepository{
 
 		return "Account failed to update";
 	}
+	
+	public String deleteMember(int memberid) {
+		membersMap.remove(memberid);
+		return "Member successfully deleted" + j1.getJSONForObject(membersMap.get(memberid));
+	}
 }

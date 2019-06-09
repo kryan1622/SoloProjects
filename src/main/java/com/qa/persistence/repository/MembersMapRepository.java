@@ -19,4 +19,15 @@ public class MembersMapRepository implements MembersRepository{
 		membersMap.put(m1.getMemberid(), m1);
 			return "Member successfully created";	
 		}
+	
+	public String updateMember(int memberid, String Member) {
+		Members m2 = j1.getObjectForJSON(Member, Members.class);
+
+		if (membersMap.containsKey(memberid)) {
+			membersMap.replace(memberid, m2);
+			return "Account updated" + j1.getJSONForObject(membersMap.get(memberid));
+		}
+
+		return "Account failed to update";
+	}
 }

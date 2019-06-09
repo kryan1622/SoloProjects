@@ -20,6 +20,15 @@ public class MembersMapRepository implements MembersRepository{
 			return "Member successfully created";	
 		}
 	
+	public String getAllMembers() {
+		return j1.getJSONForObject(membersMap.values());
+	}
+	
+	public String findMember(int memberid) {
+		return j1.getJSONForObject(membersMap.get(memberid));
+	}
+	
+	
 	public String updateMember(int memberid, String Member) {
 		Members m2 = j1.getObjectForJSON(Member, Members.class);
 

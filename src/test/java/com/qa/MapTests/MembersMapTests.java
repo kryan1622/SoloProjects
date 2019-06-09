@@ -35,10 +35,29 @@ public class MembersMapTests {
 	}
 	
 	@Test
+	public void getAllMembers() {
+		mmr.createMember("{\"memberid\":1,\"firstname\":\"Krystal\",\"lastname\":\"Ryan\"}");
+		mmr.createMember("{\"memberid\":2,\"firstname\":\"Jack\",\"lastname\":\"Ryan\"}");	
+		assertEquals("{\"memberid\":1,\"firstname\":\"Krystal\",\"lastname\":\"Ryan\"},{\"memberid\":2,\"firstname\":\"Jack\",\"lastname\":\"Ryan\"}",mmr.getAllMembers());
+	}
+	
+	@Test
+	public void findMember() {
+		mmr.createMember("{\"memberid\":1,\"firstname\":\"Krystal\",\"lastname\":\"Ryan\"}");
+		assertEquals("{\"memberid\":1,\"firstname\":\"Krystal\",\"lastname\":\"Ryan\"}",mmr.findMember(1));
+	}
+	
+	@Test
 	public void updateMember() {
 		mmr.getmembersMap().put(1, mem1);
 		mmr.updateMember(1, "{\"memberid\":1,\"firstname\":\"Jack\",\"lastname\":\"Ryan\"}");
 		assertEquals("Jack", mmr.getmembersMap().get(1).getFirstname());
+	}
+	
+	@Test
+	public void updateMemberThatDoesntExist() {
+		mmr.getmembersMap().put(1, mem1);
+		assertEquals("Account failed to update", mmr.updateMember(3, "{\"memberid\":3,\"firstname\":\"Megan\",\"lastname\":\"Ryan\"}"));	
 	}
 	
 	@Test

@@ -12,9 +12,9 @@ public class Instructors {
 	@Id@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int instructorid;
 	@Column(length=200)
-	private String instructorfirstname;
+	private String firstname;
 	@Column(length=200)
-	private String instructorlastname;
+	private String lastname;
 
 	public Instructors() {
 		
@@ -28,24 +28,24 @@ public class Instructors {
 		this.instructorid = instructorid;
 	}
 
-	public String getInstructorfirstname() {
-		return instructorfirstname;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setInstructorfirstname(String instructorfirstname) {
-		this.instructorfirstname = instructorfirstname;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
-	public String getInstructorlastname() {
-		return instructorlastname;
+	public String getLastname() {
+		return lastname;
 	}
 
-	public void setInstructorlastname(String instructorlastname) {
-		this.instructorlastname = instructorlastname;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
-	public Instructors(String instructorfirstname, String instructorlastname) {
-		this.instructorfirstname=instructorfirstname;
-		this.instructorlastname=instructorlastname;
+	public Instructors(String firstname, String lastname) {
+		this.firstname=firstname;
+		this.lastname=lastname;
 	}
 }

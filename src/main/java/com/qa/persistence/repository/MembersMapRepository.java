@@ -34,10 +34,10 @@ public class MembersMapRepository implements MembersRepository{
 
 		if (membersMap.containsKey(memberid)) {
 			membersMap.replace(memberid, m2);
-			return "Account updated" + j1.getJSONForObject(membersMap.get(memberid));
+			return "Member updated" + j1.getJSONForObject(membersMap.get(memberid));
 		}
 
-		return "Account failed to update";
+		return "Member failed to update";
 	}
 	
 	public String deleteMember(int memberid) {

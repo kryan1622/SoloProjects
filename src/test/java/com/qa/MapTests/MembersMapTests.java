@@ -1,6 +1,7 @@
 package com.qa.MapTests;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.qa.persistence.domain.Members;
@@ -34,11 +35,12 @@ public class MembersMapTests {
 		assertEquals("Jack", mmr.getmembersMap().get(2).getFirstname());
 	}
 	
+
 	@Test
 	public void getAllMembers() {
 		mmr.createMember("{\"memberid\":1,\"firstname\":\"Krystal\",\"lastname\":\"Ryan\"}");
 		mmr.createMember("{\"memberid\":2,\"firstname\":\"Jack\",\"lastname\":\"Ryan\"}");	
-		assertEquals("{\"memberid\":1,\"firstname\":\"Krystal\",\"lastname\":\"Ryan\"},{\"memberid\":2,\"firstname\":\"Jack\",\"lastname\":\"Ryan\"}",mmr.getAllMembers());
+		assertEquals("[{\"memberid\":1,\"firstname\":\"Krystal\",\"lastname\":\"Ryan\"},{\"memberid\":2,\"firstname\":\"Jack\",\"lastname\":\"Ryan\"}]",mmr.getAllMembers());
 	}
 	
 	@Test
@@ -57,7 +59,7 @@ public class MembersMapTests {
 	@Test
 	public void updateMemberThatDoesntExist() {
 		mmr.getmembersMap().put(1, mem1);
-		assertEquals("Account failed to update", mmr.updateMember(3, "{\"memberid\":3,\"firstname\":\"Megan\",\"lastname\":\"Ryan\"}"));	
+		assertEquals("Member failed to update", mmr.updateMember(3, "{\"memberid\":3,\"firstname\":\"Megan\",\"lastname\":\"Ryan\"}"));	
 	}
 	
 	@Test

@@ -1,0 +1,93 @@
+package com.qa.MapTests;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
+import com.qa.persistence.domain.Classes;
+import com.qa.persistence.repository.ClassesMapRepository;
+
+
+public class ClassesMapTests {
+	
+	private ClassesMapRepository cmr;
+	private Classes class1;
+	private Classes class2;
+
+	@Before
+	public void setup() {
+	cmr = new ClassesMapRepository();
+	class1 = new Classes("Balletfit",1);
+	class2= new Classes("Zumba",2);
+}
+	
+	@Test
+	public void addClassTest() {
+		cmr.createClass("{\"classid\":1,\"classname\":\"Balletfit\",\"instructorid\":1}");
+		assertEquals(1, cmr.getclassMap().size());
+		assertEquals("Balletfit", cmr.getclassMap().get(1).getClassname());
+	}	
+	
+	@Test
+	public void add2ClassesTest() {
+		cmr.createClass("{\"classid\":1,\"classname\":\"Balletfit\",\"instructorid\":1}");
+		cmr.createClass("{\"classid\":2,\"classname\":\"Zumba\",\"instructorid\":2}");
+		assertEquals(2, cmr.getclassMap().size());
+		assertEquals("Zumba", cmr.getclassMap().get(2).getClassname());
+	}
+	
+	@Test
+	public void getAllMembers() {
+		cmr.createClass("{\"classid\":1,\"classname\":\"Balletfit\",\"instructorid\":1}");
+		cmr.createClass("{\"classid\":2,\"classname\":\"Zumba\",\"instructorid\":2}");	
+		assertEquals("[{\"classid\":1,\"classname\":\"Balletfit\",\"instructorid\":1},{\"classid\":2,\"classname\":\"Zumba\",\"instructorid\":2}]",cmr.getAllClasses());
+	}
+	
+	@Test
+	public void findClass() {
+		cmr.createClass("{\"classid\":1,\"classname\":\"Balletfit\",\"instructorid\":1}");
+		assertEquals("{\"classid\":1,\"classname\":\"Balletfit\",\"instructorid\":1}",cmr.findClass(1));
+	}
+	
+	@Test
+	public void updateClass() {
+		cmr.getclassMap().put(1, class1);
+		cmr.updateClass(1, "{\"classid\":1,\"classname\":\"Spin\",\"instructorid\":1}");
+		assertEquals("Spin", cmr.getclassMap().get(1).getClassname());
+	}
+	
+	@Test
+	public void updateClassThatDoesntExist() {
+		cmr.getclassMap().put(1, class1);
+		assertEquals("Class failed to update", cmr.updateClass(3, "{\"classid\":3,\"classname\":\"HIIT\",\"instructorid\":1}"));	
+	}
+	
+	@Test
+	public void removeClassTest() {
+
+		cmr.getclassMap().put(1, class1);
+		cmr.deleteClass(1);
+		assertEquals(0, cmr.getclassMap().size());
+	}
+	
+	@Test
+	public void remove2ClassesTest() {
+		cmr.getclassMap().put(1, class1);
+		cmr.getclassMap().put(2, class2);
+		cmr.deleteClass(1);
+		cmr.deleteClass(2);
+		assertEquals(0, cmr.getclassMap().size());
+	}
+	
+	@Test
+	public void remove2ClassesAnd1ThatDoesntExistTest() {
+		cmr.getclassMap().put(1, class1);
+		cmr.getclassMap().put(2, class2);
+		cmr.deleteClass(1);
+		cmr.deleteClass(2);
+		cmr.deleteClass(3);
+		assertEquals(0, cmr.getclassMap().size());
+	}
+
+}

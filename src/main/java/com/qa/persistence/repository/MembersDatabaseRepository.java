@@ -21,9 +21,11 @@ public class MembersDatabaseRepository implements MembersRepository{
 	private JSONUtil j1;
 
 	@Override
-	public String createMember(String Members) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional(REQUIRED)
+	public String createMember(String member) {
+		Members amember = j1.getObjectForJSON(member, Members.class);
+		manager.persist(amember);
+		return "{\"message\": \"Member has been successfully added\"}";
 	}
 
 	@Override
@@ -40,15 +42,33 @@ public class MembersDatabaseRepository implements MembersRepository{
 	}
 
 	@Override
-	public String updateMember(int memberid, String Member) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional(REQUIRED)
+	public String updateMember(int memberid, String member) {
+    Members oldaccount = manager.find(Members.class, memberid);
+    Members newaccount = j1.getObjectForJSON(member, Members.class);
+    if (oldaccount != null) {
+    	oldaccount.setFirstname(newaccount.getFirstname());
+    	oldaccount.setLastname(newaccount.getLastname());
+    	manager.persist(oldaccount);
+    	return "{\"message\": \"Member successfully updated\"}";
+    }
+    else {
+    	return "{\"message\": \"No member found with this id\"}";
+    }
 	}
 
 	@Override
+	@Transactional(REQUIRED)
 	public String deleteMember(int memberid) {
-		// TODO Auto-generated method stub
-		return null;
+	Members member = manager.find(Members.class, memberid);
+	
+	if (manager.contains(member)) {
+		manager.remove(member);
+		return "{\"message\": \"Member sucessfully deleted " + memberid + " \"}";
+	}
+	else {
+		return "{\"message\": \"No member found with this id\"}";
+	}
 	}
 
 }

@@ -17,4 +17,20 @@ public class MembersServiceImpl implements MembersService{
 		return MR.findMember(memberid);
 	}
 
+	@Override
+	public String deleteMember(int memberid) {
+		return MR.deleteMember(memberid);
+	}
+
+	@Override
+	public String updateMember(int memberid, String member) {
+		return MR.updateMember(memberid, member);
+	}
+
+	@Override
+	public String createMember(String member) {
+		return MR.createMember(member);
+	}
+	
+
 }

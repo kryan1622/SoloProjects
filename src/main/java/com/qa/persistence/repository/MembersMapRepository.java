@@ -3,9 +3,12 @@ package com.qa.persistence.repository;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.enterprise.inject.Alternative;
+
 import com.qa.persistence.domain.Members;
 import com.qa.util.JSONUtil;
 
+@Alternative
 public class MembersMapRepository implements MembersRepository{
 
 	private Map<Integer,Members> membersMap = new HashMap<Integer,Members>();

@@ -1,12 +1,18 @@
 package com.qa.persistence.domain;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-@Entity
+
+@Entity(name = "Instructors")
 public class Instructors {
 
 	@Id@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -15,7 +21,12 @@ public class Instructors {
 	private String firstname;
 	@Column(length=200)
 	private String lastname;
+	
+	
 
+	@OneToMany(cascade= CascadeType.ALL, mappedBy = "instructors", fetch = FetchType.EAGER)
+	private Set<Classes> classes; 
+	
 	public Instructors() {
 		
 	}
@@ -48,4 +59,16 @@ public class Instructors {
 		this.firstname=firstname;
 		this.lastname=lastname;
 	}
+
+	public Set<Classes> getClasses() {
+		return classes;
+	}
+
+	public void setClasses(Set<Classes> classes) {
+		this.classes = classes;
+	}
+
+	
+	
+	
 }

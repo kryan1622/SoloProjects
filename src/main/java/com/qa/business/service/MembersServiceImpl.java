@@ -1,5 +1,7 @@
 package com.qa.business.service;
 import javax.inject.Inject;
+import javax.persistence.Query;
+
 import com.qa.persistence.repository.MembersRepository;
 
 public class MembersServiceImpl implements MembersService{
@@ -11,6 +13,7 @@ public class MembersServiceImpl implements MembersService{
 	public String getAllMembers() {
 		return MR.getAllMembers();
 	}
+
 
 	@Override
 	public String findMember(int memberid) {

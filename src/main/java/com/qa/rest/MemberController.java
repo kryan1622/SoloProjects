@@ -38,14 +38,14 @@ public class MemberController {
 	}
 	
 	@Path("/updateMember/{memberid}")
-	@POST
+	@PUT
 	@Produces({"application/json"})
 	public String updateMember(@PathParam("memberid")int memberid, String member) {
 		return service.updateMember(memberid, member);
 	}
 	
 	@Path("/createMember")
-	@PUT
+	@POST
 	@Produces({"application/json"})
 	public String createMember(String member) {
 		return service.createMember(member);

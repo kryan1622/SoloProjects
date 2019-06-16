@@ -1,5 +1,6 @@
 package com.qa.persistence.repository;
 
+import static javax.transaction.Transactional.TxType.REQUIRED;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
 
 import javax.enterprise.inject.Default;
@@ -9,6 +10,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import com.qa.persistence.domain.Classes;
+import com.qa.persistence.domain.Members;
 import com.qa.util.JSONUtil;
 
 @Transactional(SUPPORTS)
@@ -29,26 +32,44 @@ public class ClassesDatabaseRepository implements ClassesRepository{
 	}
 
 	@Override
-	public String createClass(String Classes) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional(REQUIRED)
+	public String createClass(String Class) {
+		Classes newclass = j1.getObjectForJSON(Class, Classes.class);
+		manager.persist(newclass);
+		return "{\"message\": \"Class has been successfully added\"}";
 	}
 
 	@Override
+	@Transactional(SUPPORTS)
 	public String findClass(int classid) {
-		// TODO Auto-generated method stub
-		return null;
+		return j1.getJSONForObject(manager.find(Classes.class, classid));
 	}
 
 	@Override
-	public String updateClass(int classid, String Class) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional(REQUIRED)
+	public String updateClass(int classid, String Classes) {
+    Classes oldclass = manager.find(Classes.class, classid);
+    Classes newclass = j1.getObjectForJSON(Classes, Classes.class);
+    if (oldclass != null) {
+    	oldclass.setClassname(newclass.getClassname());
+    	manager.persist(oldclass);
+    	return "{\"message\": \"Class successfully updated\"}";
+    }
+    else {
+    	return "{\"message\": \"No class found with this id\"}";
+    }
 	}
 
 	@Override
+	@Transactional(REQUIRED)
 	public String deleteClass(int classid) {
-		// TODO Auto-generated method stub
-		return null;
+    Classes c1 = manager.find(Classes.class, classid);
+    if (manager.contains(c1)) {
+		manager.remove(c1);
+		return "{\"message\": \"Class sucessfully deleted " + classid + " \"}";
+	}
+	else {
+		return "{\"message\": \"No Class found with this id\"}";
+	}
 	}
 }

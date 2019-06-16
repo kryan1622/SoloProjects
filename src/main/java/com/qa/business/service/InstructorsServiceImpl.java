@@ -17,26 +17,22 @@ public class InstructorsServiceImpl implements InstructorsService{
 
 	@Override
 	public String findInstructor(int instructorid) {
-		// TODO Auto-generated method stub
-		return null;
+		return IR.findInstructor(instructorid);
 	}
 
 	@Override
 	public String deleteInstructor(int instructorid) {
-		// TODO Auto-generated method stub
-		return null;
+		return IR.deleteInstructor(instructorid);
 	}
 
 	@Override
-	public String updateInstructor(int instructorid, String instructors) {
-		// TODO Auto-generated method stub
-		return null;
+	public String updateInstructor(int instructorid, String Instructors) {
+	return IR.updateInstructor(instructorid, Instructors);
 	}
 
 	@Override
-	public String createInstructor(String instructors) {
-		// TODO Auto-generated method stub
-		return null;
+	public String createInstructor(String Instructors) {
+	return IR.createInstructor(Instructors);
 	}
 	
 

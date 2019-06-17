@@ -6,5 +6,5 @@ public interface MembersService{
 	String deleteMember(int memberid);
 	String updateMember(int memberid, String member);
 	String createMember(String member);
-
+	String findMemberbyName(String firstname);
 }

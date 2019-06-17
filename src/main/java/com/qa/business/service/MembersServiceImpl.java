@@ -34,6 +34,12 @@ public class MembersServiceImpl implements MembersService{
 	public String createMember(String member) {
 		return MR.createMember(member);
 	}
+
+
+	@Override
+	public String findMemberbyName(String firstname) {
+		return MR.findMemberbyName(firstname);
+	}
 	
 
 }

@@ -10,6 +10,10 @@ import com.qa.util.JSONUtil;
 import static javax.transaction.Transactional.TxType.REQUIRED;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Transactional(SUPPORTS)
 @Default
 public class MembersDatabaseRepository implements MembersRepository{
@@ -29,16 +33,27 @@ public class MembersDatabaseRepository implements MembersRepository{
 	}
 
 	@Override
-	@Transactional(SUPPORTS)
 	public String getAllMembers() {
 		Query query =  manager.createQuery("SELECT m FROM Members m");
 		return j1.getJSONForObject(query.getResultList());
 	}
 
 	@Override
-	@Transactional(SUPPORTS)
 	public String findMember(int memberid) {
 		return j1.getJSONForObject(manager.find(Members.class, memberid));
+	}
+	
+	
+	public String findMemberbyName(String firstname) {
+		Query query = manager.createQuery("SELECT m FROM Members m");
+		Collection<Members> members = (Collection<Members>) query.getResultList();
+		List<Members> result = members.stream().filter(n -> n.getFirstname().contains(firstname)).collect(Collectors.toList());
+		if (result.isEmpty()) {
+			return "{\"message\": \"No member found with this id" + result + "\"}";
+		}
+		else {
+			return j1.getJSONForObject(result);
+		}
 	}
 
 	@Override

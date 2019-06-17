@@ -24,6 +24,7 @@ public class InstructorDatabaseRepository implements InstructorRepository{
 	private JSONUtil j1;
 
 	@Override
+	@Transactional(REQUIRED)
 	public String createInstructor(String Instructors) {
 		Instructors ainstructor = j1.getObjectForJSON(Instructors, Instructors.class);
 		manager.persist(ainstructor);
@@ -40,8 +41,11 @@ public class InstructorDatabaseRepository implements InstructorRepository{
 	public String findInstructor(int instructorid) {
 		return j1.getJSONForObject(manager.find(Instructors.class, instructorid));
 	}
+	
+	
 
 	@Override
+	@Transactional(REQUIRED)
 	public String updateInstructor(int instructorid, String Instructors) {
     Instructors oldinstructor = manager.find(Instructors.class, instructorid);
     Instructors newinstructor = j1.getObjectForJSON(Instructors, Instructors.class);
@@ -56,17 +60,17 @@ public class InstructorDatabaseRepository implements InstructorRepository{
 		    }
 			}
 
-	@Override
+	
 	@Transactional(REQUIRED)
 	public String deleteInstructor(int instructorid) {
-		Instructors instructor = manager.find(Instructors.class, instructorid);
-		
-		if (manager.contains(instructor)) {
-			manager.remove(instructor);
+		String i1 = j1.getJSONForObject(manager.find(Instructors.class, instructorid));
+//		Instructors instructor = manager.find(Instructors.class, instructorid);
+		if (manager.contains(i1)) {
+			manager.remove(i1);		
 			return "{\"message\": \"Instructor sucessfully deleted " + instructorid + " \"}";
 		}
-		else {
-			return "{\"message\": \"No instructor found with this id" + instructor + "\"}";
+	else {
+			return "{\"message\": \"No instructor found with this id" + i1 + "\"}";
 		}
 		}
 	}

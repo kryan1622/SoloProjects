@@ -30,6 +30,13 @@ public class MemberController {
 		return service.findMember(memberid);
 	}
 	
+	@Path("/findMemberbyName/{firstname}")
+	@GET
+	@Produces({"application/json"})
+	public String findMemberbyName(@PathParam("firstname")String firstname) {
+		return service.findMemberbyName(firstname);
+	}
+	
 	@Path("/deleteMember/{memberid}")
 	@DELETE
 	@Produces({"application/json"})

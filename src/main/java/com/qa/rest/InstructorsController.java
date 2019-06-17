@@ -34,7 +34,7 @@ public class InstructorsController {
 	@Path("/deleteInstructor/{instructorid}")
 	@DELETE
 	@Produces({"application/json"})
-	public String deleteInstructor(@PathParam("instructorid") int instructorid) {
+	public String deleteInstructor(@PathParam("instructorid")int instructorid) {
 		return service.deleteInstructor(instructorid);
 	}
 	
@@ -45,7 +45,7 @@ public class InstructorsController {
 		return service.updateInstructor(instructorid, Instructors);
 	}
 	
-	@Path("/createInstuctor")
+	@Path("/createInstructor")
 	@POST
 	@Produces({"application/json"})
 	public String createInstructor(String Instructor) {

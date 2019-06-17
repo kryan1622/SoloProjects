@@ -1,6 +1,6 @@
 INSERT INTO MEMBERS (memberid, firstname, lastname) VALUES (1234, 'John', 'Doe');
 INSERT INTO MEMBERS (memberid, firstname, lastname) VALUES (1235, 'Jane', 'Doe');
-INSERT INTO MEMBERS (memberid firstname, lastname) VALUES (1236, 'Jim', 'Taylor');
+INSERT INTO MEMBERS (memberid, firstname, lastname) VALUES (1236, 'Jim', 'Taylor');
 
 
 INSERT INTO INSTRUCTORS (instructorid, firstname, lastname) VALUES (1,'Josh','Brooks');

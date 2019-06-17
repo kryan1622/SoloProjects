@@ -7,4 +7,5 @@ public interface MembersRepository {
 	public String findMember(int memberid);
 	public String updateMember(int memberid, String Member);
 	public String deleteMember(int memberid);
+    public String findMemberbyName(String firstname) ;
 }

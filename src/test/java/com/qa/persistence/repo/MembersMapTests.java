@@ -1,4 +1,4 @@
-package com.qa.MapTests;
+package com.qa.persistence.repo;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Ignore;

@@ -30,6 +30,13 @@ public class MemberController {
 		return service.findMember(memberid);
 	}
 	
+	@Path("/findMemberbyName/{firstname}")
+	@GET
+	@Produces({"application/json"})
+	public String findMemberbyName(@PathParam("firstname")String firstname) {
+		return service.findMemberbyName(firstname);
+	}
+	
 	@Path("/deleteMember/{memberid}")
 	@DELETE
 	@Produces({"application/json"})
@@ -38,14 +45,14 @@ public class MemberController {
 	}
 	
 	@Path("/updateMember/{memberid}")
-	@POST
+	@PUT
 	@Produces({"application/json"})
 	public String updateMember(@PathParam("memberid")int memberid, String member) {
 		return service.updateMember(memberid, member);
 	}
 	
 	@Path("/createMember")
-	@PUT
+	@POST
 	@Produces({"application/json"})
 	public String createMember(String member) {
 		return service.createMember(member);

@@ -1,24 +1,60 @@
 package com.qa.persistence.domain;
 
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
-@Entity
+
+@Entity(name = "Instructors")
 public class Instructors {
 
 	@Id@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="instructorid")
 	private int instructorid;
 	@Column(length=200)
 	private String firstname;
 	@Column(length=200)
 	private String lastname;
+	
+	
+
+ 
+//    @JoinColumn(name = "classid", referencedColumnName = "classid")
+//	@OneToMany(fetch = FetchType.EAGER, cascade= CascadeType.ALL)
+//	private Set<Classes> classes; 
+	
+	
+
 
 	public Instructors() {
 		
 	}
+	
+	
+
+
+
+
+
+	public Instructors(int instructorid, String firstname, String lastname) {
+		super();
+		this.instructorid = instructorid;
+		this.firstname = firstname;
+		this.lastname = lastname;
+	
+	}
+
+
 
 	public int getInstructorid() {
 		return instructorid;
@@ -44,8 +80,29 @@ public class Instructors {
 		this.lastname = lastname;
 	}
 
-	public Instructors(String firstname, String lastname) {
-		this.firstname=firstname;
-		this.lastname=lastname;
+
+
+
+
+
+
+	@Override
+	public String toString() {
+		return "Instructors [instructorid=" + instructorid + ", firstname=" + firstname + ", lastname=" + lastname
+				+ "]";
 	}
+
+
+
+//	public Set<Classes> getClasses() {
+//		return classes;
+//	}
+//
+//	public void setClasses(Set<Classes> classes) {
+//		this.classes = classes;
+//	}
+
+	
+	
+	
 }

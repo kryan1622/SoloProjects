@@ -17,8 +17,8 @@ public class InstructorsMapTests {
 	@Before
 	public void setup() {
 	imr = new InstructorMapRepository();
-	in1 = new Instructors("Monica", "Mistry");
-	in2= new Instructors("Josh", "Brookes");
+	in1 = new Instructors(1, "Monica", "Mistry");
+	in2= new Instructors(2, "Josh", "Brookes");
 }
 	
 	@Test

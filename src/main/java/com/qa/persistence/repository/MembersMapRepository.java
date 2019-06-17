@@ -47,4 +47,9 @@ public class MembersMapRepository implements MembersRepository{
 		membersMap.remove(memberid);
 		return "Member successfully deleted" + j1.getJSONForObject(membersMap.get(memberid));
 	}
+	@Override
+	public String findMemberbyName(String firstname) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

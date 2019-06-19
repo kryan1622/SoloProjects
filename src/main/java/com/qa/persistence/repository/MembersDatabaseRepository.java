@@ -72,7 +72,6 @@ public class MembersDatabaseRepository implements MembersRepository{
     }
 	}
 
-	@Override
 	@Transactional(REQUIRED)
 	public String deleteMember(int memberid) {
 	Members member = manager.find(Members.class, memberid);
@@ -101,6 +100,8 @@ public class MembersDatabaseRepository implements MembersRepository{
 	public void setJ1(JSONUtil j1) {
 		this.j1 = j1;
 	}
+
+	
 
 	
 }

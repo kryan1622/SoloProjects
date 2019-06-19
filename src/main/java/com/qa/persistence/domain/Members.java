@@ -19,6 +19,8 @@ public class Members {
 	public Members() {
 		
 	}
+	
+	
 
 	public int getMemberid() {
 		return memberid;
@@ -44,7 +46,8 @@ public class Members {
 		this.lastname = lastname;
 	}
 
-	public Members(String firstname, String lastname) {
+	public Members(int memberid, String firstname, String lastname) {
+		this.memberid=memberid;
 		this.firstname=firstname;
 		this.lastname=lastname;
 	}

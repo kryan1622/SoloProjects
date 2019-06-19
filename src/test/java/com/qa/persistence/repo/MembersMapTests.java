@@ -16,8 +16,8 @@ public class MembersMapTests {
 	@Before
 	public void setup() {
 	mmr = new MembersMapRepository();
-	mem1 = new Members("Krystal", "Ryan");
-	mem2= new Members("Jack", "Ryan");
+	mem1 = new Members(1,"Krystal", "Ryan");
+	mem2= new Members(2,"Jack", "Ryan");
 }
 	
 	@Test

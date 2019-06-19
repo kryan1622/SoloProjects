@@ -7,7 +7,7 @@ function makeRequest(method, url, body) {
         req.send(body);
         req.onload = function () {
             const data = JSON.parse(req.responseText);
-            if (req.status === 200) {
+            if (req.status >= 200 || req.status < 300) {
                 resolve(data);
             } else {
                 reject(Error(req.statusText));
@@ -21,7 +21,10 @@ function makeRequest(method, url, body) {
 
 function createClass() {
     let cla = {
-        classname: document.getElementById('classname').value
+        classname: document.getElementById('classname').value,
+        instructors: {
+            instructorid: Number(document.getElementById('instructorid').value)
+        } 
     };
     makeRequest("Post", "http://localhost:8080/SoloProj/api/classes/createClass", JSON.stringify(cla)).then(resolve => { console.log(resolve) });
 
@@ -68,14 +71,15 @@ function getAllClasses() {
 
              myRow.appendChild(detailButton);
 
-            //  let detail2 = document.createElement('td');
-            //  let detail2Button2 = document.createElement('button');
+             let detail2 = document.createElement('td');
+             let detail2Button2 = document.createElement('button');
 
-            // detail2Button2.id = value[i].memberid;
-            // detail2Button2.innerText = "Update Member";
-            // detail2.innerHTML = detail2Button2;
+             detail2Button2.id = value[i].classid;
+             detail2Button2.innerText = "Delete Class";
+             detail2Button2.onclick = detail2Button2Handler;
+             detail2.innerHTML = detail2Button2;
 
-            // myRow.appendChild(detail2Button2);
+             myRow.appendChild(detail2Button2);
          }
 
      })
@@ -88,14 +92,11 @@ function getAllClasses() {
 
      sessionStorage.setItem('classid', event.target.id)
    
-
-
-
          const classiq = sessionStorage.getItem('classid');
 
 
          makeRequest("GET", "http://localhost:8080/SoloProj/api/classes/getAllClasses").then(value => {
-            let data = JSON.stringify(value);
+            // let data = JSON.stringify(value);
             const container = document.getElementById('instructorTable');
             
     
@@ -108,7 +109,7 @@ function getAllClasses() {
     
             }
     
-             for (let i = 0; i < 1; i++) {
+            //  for (let i = 0; i < 1; i++) {
                  let myRow = document.createElement('tr');
                  container.appendChild(myRow);
                  let myInstructorid = document.createElement('td');
@@ -122,19 +123,29 @@ function getAllClasses() {
                 myRow.appendChild(myFirstName);
                 myRow.appendChild(myLastName);
         
-                }
+                // }
 
             })
             .catch((error) => console.log(error.message));
             return false;
           }
-        
-    //  function updateMember() {
-    //      let user = {
-    //          firstname: document.getElementById('firstname2').value,
-    //          lastname: document.getElementById('lastname2').value
-    //      };
-    //      let id = Number(document.getElementById("memberid").value);
-    //      makeRequest("PUT", "http://localhost:8080/SoloProj/api/members/updateMember/" + id, JSON.stringify(user)).then(resolve => { console.log(resolve) });
+
+          const detail2Button2Handler = () => {
+
+            sessionStorage.setItem('classid', event.target.id)
        
-    //  }
+                const classiq = sessionStorage.getItem('classid');
+
+                makeRequest("DELETE", "http://localhost:8080/SoloProj/api/classes/deleteClass/" + classiq).then(resolve => { console.log(resolve) });
+
+            }
+        
+     function updateMember() {
+          let user = {
+              firstname: document.getElementById('firstname2').value,
+              lastname: document.getElementById('lastname2').value
+          };
+          let id = Number(document.getElementById("memberid").value);
+          makeRequest("PUT", "http://localhost:8080/SoloProj/api/members/updateMember/" + id, JSON.stringify(user)).then(resolve => { console.log(resolve) });
+       
+     }

@@ -73,7 +73,25 @@ public class InstructorDatabaseRepository implements InstructorRepository{
 			return "{\"message\": \"No instructor found with this id" + i1 + "\"}";
 		}
 		}
+
+	public EntityManager getManager() {
+		return manager;
 	}
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
+	}
+
+	public JSONUtil getJ1() {
+		return j1;
+	}
+
+	public void setJ1(JSONUtil j1) {
+		this.j1 = j1;
+	}
+	
+
+}
 
 
 

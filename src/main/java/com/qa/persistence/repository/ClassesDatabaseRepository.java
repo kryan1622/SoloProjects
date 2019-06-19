@@ -72,4 +72,22 @@ public class ClassesDatabaseRepository implements ClassesRepository{
 		return "{\"message\": \"No Class found with this id\"}";
 	}
 	}
+
+	public EntityManager getManager() {
+		return manager;
+	}
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
+	}
+
+	public JSONUtil getJ1() {
+		return j1;
+	}
+
+	public void setJ1(JSONUtil j1) {
+		this.j1 = j1;
+	}
+	
+	
 }

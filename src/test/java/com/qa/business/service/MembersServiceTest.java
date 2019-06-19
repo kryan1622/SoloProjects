@@ -28,20 +28,20 @@ public class MembersServiceTest {
     private static final String MEMBEROBJECT = "{\"memberid\":1,\"firstname\":\"Krystal\",\"lastname\":\"Ryan\"}";
 	
 	@Test
-	public void getAllMembers() {
+	public void getAllMembersTest() {
 		Mockito.when(repo.getAllMembers()).thenReturn("{\"message\": \"No members found\"}");
 		Assert.assertEquals("{\"message\": \"No members found\"}", service.getAllMembers());
 		
 	}
 	
 	@Test
-	public void createMember() {
+	public void createMemberTest() {
 		Mockito.when(repo.createMember(MEMBER1)).thenReturn("{\"message\": \"Member has been successfully added\"}");
 		Assert.assertEquals("{\"message\": \"Member has been successfully added\"}", service.createMember(MEMBER1));
 	}
 	
 	@Test
-	public void findMember() {
+	public void findMemberTest() {
 		Mockito.when(repo.findMember(1)).thenReturn(MEMBEROBJECT);
 		Assert.assertEquals(MEMBEROBJECT, service.findMember(1));
 	}

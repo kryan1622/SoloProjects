@@ -7,6 +7,7 @@
 
 <body>
 
+
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
                 <a class="navbar-brand" href="home.html">
                     <img src="gymicon.png" width="60" height="60" class="d-inline-block align-middle" alt="">
@@ -19,15 +20,15 @@
                           Members
                         </a>
                         <div class="dropdown-menu">
-                          <a class="Create Member" href="createMember.html">Create member</a>
+                          <a class="dropdown" href="createMember.html">Create member</a>
                           <br>
-                          <a class="Get all Members" href="getAllMembers.html">Get all members</a>
+                          <a class="dropdown" href="getAllMembers.html">Get all members</a>
                           <br>
-                          <a class="Update Member" href="updateMember.html">Update member</a>
+                          <a class="dropdown" href="updateMember.html">Update member</a>
                           <br>
-                          <a class="Find Member" href="#">Find member</a>
+                          <a class="dropdown" href="#">Find member</a>
                           <br>
-                          <a class="Delete Member" href="getAllMembers.html">Delete member</a>
+                          <a class="dropdown" href="getAllMembers.html">Delete member</a>
                         </div>
                       </li>
                   <li class="nav-item dropdown">
@@ -35,15 +36,15 @@
                          Classes
                         </a>
                         <div class="dropdown-menu">
-                          <a class="Create class" href="#">Create Class</a>
+                          <a class="dropdown" href="#">Create Class</a>
                           <br>
-                          <a class="Get all Classes" href="#">Get all Classes</a>
+                          <a class="dropdown" href="#">Get all Classes</a>
                           <br>
-                          <a class="Update Class" href="#">Update Class</a>
+                          <a class="dropdown" href="#">Update Class</a>
                           <br>
-                          <a class="Find CLass" href="#">Find Class</a>
+                          <a class="dropdown" href="#">Find Class</a>
                           <br>
-                          <a class="Delete CLass" href="#">Delete Class</a>
+                          <a class="dropdown" href="#">Delete Class</a>
                         </div>
                       </li>
                   <li class="nav-item dropdown">
@@ -51,15 +52,15 @@
                       Instructors
                     </a>
                     <div class="dropdown-menu">
-                            <a class="Create Instructor" href="#">Create Instructor</a>
+                            <a class="dropdown" href="createInstructor.html">Create Instructor</a>
                             <br>
-                            <a class="Get all Instructors" href="#">Get all Instructors</a>
+                            <a class="dropdown" href="getAllInstructors.html">Get all Instructors</a>
                             <br>
-                            <a class="Update Instructor" href="#">Update Instructor</a>
+                            <a class="dropdown" href="updateInstructor.html">Update Instructor</a>
                             <br>
-                            <a class="Find Instructor" href="#">Find Instructor</a>
+                            <a class="dropdown" href="#">Find Instructor</a>
                             <br>
-                            <a class="Delete Instructor" href="#">Delete Instructor</a>
+                            <a class="dropdown" href="#">Delete Instructor</a>
                           </div>
                         </li>
                     <div class="dropdown-menu">
@@ -72,26 +73,24 @@
                 </ul>
               </nav>
               <br>
-
-
         <div class="container mx-auto">
                 <div class="row">
                     <div class="form-group">
+                            <div class="form-group col-md-6">
+                                    <label for="input member id">Member ID</label>
+                                    <input type="text" class="form-control" id="memberid" placeholder="memberid">
+                                </div>
                         <div class="form-group col-md-6">
-                            <label for="inputFirstName">First Name</label>
-                            <input type="text" class="form-control" id="firstname" placeholder="firstname2">
+                            <label for="input First Name">First Name</label>
+                            <input type="text" class="form-control" id="firstname2" placeholder="firstname">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputLastName">Last Name</label>
-                            <input type="text" class="form-control" id="lastname" placeholder="lastname2">
+                            <label for="input Last Name">Last Name</label>
+                            <input type="text" class="form-control" id="lastname2" placeholder="lastname">
                         </div>
-                        <input type="button" class="btn btn-secondary btn-lg" value="Create a Member." onclick="createMember()"></input>
+                        <input type="button" class="btn btn-secondary btn-lg" value="Update a Member." onclick="updateMember()"></input>
                     </div>
                     </div>
-                    </div>
-
-                    <div id="result">
-                        
                     </div>
 
 <script src="members.js"></script>

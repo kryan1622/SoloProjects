@@ -3,6 +3,8 @@ package com.qa.persistence.repository;
 import static javax.transaction.Transactional.TxType.REQUIRED;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
 
+import java.util.Collection;
+
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -11,7 +13,6 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import com.qa.persistence.domain.Classes;
-import com.qa.persistence.domain.Members;
 import com.qa.util.JSONUtil;
 
 @Transactional(SUPPORTS)
@@ -28,6 +29,11 @@ public class ClassesDatabaseRepository implements ClassesRepository{
 	@Transactional(SUPPORTS)
 	public String getAllClasses() {
 		Query query =  manager.createQuery("SELECT c FROM Classes c");
+		Collection <Classes> classes = (Collection<Classes>) query.getResultList();
+		
+		if (classes.isEmpty()) {
+			return "{\"message\": \"No classes found\"}";
+		}
 		return j1.getJSONForObject(query.getResultList());
 	}
 

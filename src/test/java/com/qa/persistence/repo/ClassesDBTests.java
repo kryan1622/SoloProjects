@@ -8,7 +8,6 @@ import javax.persistence.Query;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -17,9 +16,7 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.qa.persistence.domain.Classes;
-import com.qa.persistence.domain.Members;
 import com.qa.persistence.repository.ClassesDatabaseRepository;
-import com.qa.persistence.repository.MembersDatabaseRepository;
 import com.qa.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -77,11 +74,16 @@ public class ClassesDBTests {
 		Assert.assertEquals("{\"message\": \"Class has been successfully added\"}",repo.createClass(CLASSOBJECT));
 		}
 		
-		@Ignore
+		
 		@Test
 		public void deleteClassTest() {
+			List<Classes> classes = new ArrayList<>();
+			Classes class1 = new Classes(1,"Zumba", null);
+			classes.add(class1);
+			Mockito.when(manager.find(Classes.class,1)).thenReturn(class1);
+			Mockito.when(manager.contains(class1)).thenReturn(true);
 			String reply = repo.deleteClass(1);
-			Assert.assertEquals(reply,"{\"message\": \"Class sucessfully deleted \"}");
+			Assert.assertEquals("{\"message\": \"Class sucessfully deleted 1 \"}",reply);
 }
 		@Test
 		public void updateClassTest() {

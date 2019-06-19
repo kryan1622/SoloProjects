@@ -3,6 +3,7 @@
         <head>
                 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
                     crossorigin="anonymous">
+                    <link rel="stylesheet" type="text/css" href="CSS/style.css">
             </head>
 
 <body>
@@ -37,7 +38,7 @@
                         <div class="dropdown-menu">
                           <a class="Create class" href="#">Create Class</a>
                           <br>
-                          <a class="Get all Classes" href="#">Get all Classes</a>
+                          <a class="Get all Classes" href="getAllClasses.html">Get all Classes</a>
                           <br>
                           <a class="Update Class" href="#">Update Class</a>
                           <br>
@@ -51,9 +52,9 @@
                       Instructors
                     </a>
                     <div class="dropdown-menu">
-                            <a class="Create Instructor" href="#">Create Instructor</a>
+                            <a class="Create Instructor" href="createInstructor.html">Create Instructor</a>
                             <br>
-                            <a class="Get all Instructors" href="#">Get all Instructors</a>
+                            <a class="Get all Instructors" href="getAllInstructors.html">Get all Instructors</a>
                             <br>
                             <a class="Update Instructor" href="#">Update Instructor</a>
                             <br>
@@ -85,7 +86,7 @@
                             <label for="inputLastName">Last Name</label>
                             <input type="text" class="form-control" id="lastname" placeholder="lastname2">
                         </div>
-                        <input type="button" class="btn btn-secondary btn-lg" value="Create a Member." onclick="createMember()"></input>
+                        <input type="button" class="btn btn-secondary btn-lg" value="Create an Instructor." onclick="createInstructor()"></input>
                     </div>
                     </div>
                     </div>
@@ -94,7 +95,7 @@
                         
                     </div>
 
-<script src="members.js"></script>
+<script src="instructor.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 crossorigin="anonymous"></script>

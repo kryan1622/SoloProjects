@@ -21,13 +21,13 @@
                             <div class="dropdown-menu">
                               <a class="Create Member" href="createMember.html">Create member</a>
                               <br>
-                              <a class="Get all Members" href="">Get all members</a>
+                              <a class="Get all Members" href="getAllMembers.html">Get all members</a>
                               <br>
-                              <a class="Update Member" href="#">Update member</a>
+                              <a class="Update Member" href="updateMember.html">Update member</a>
                               <br>
                               <a class="Find Member" href="#">Find member</a>
                               <br>
-                              <a class="Delete Member" href="#">Delete member</a>
+                              <a class="Delete Member" href="getAllMembers.html">Delete member</a>
                             </div>
                           </li>
                       <li class="nav-item dropdown">
@@ -75,25 +75,34 @@
                     
 
         <div class= "col=3">
-            <input type="button" class="btn btn-danger btn-sm" value="Get all members." onclick= "getAllMembers()"></input>
+            <input type="button" class="btn btn-secondary btn-sm" value="Get all classes." onclick= "getAllClasses()"></input>
         </div>
         </div>
     </div>
 
-    <table id="membersTable" border="1">
+    <table id="classTable" border="1">
         <tr>
-          <th>Memberid</th>  
-          <th>First Name</th>    
-          <th>Last Name</th> 
-          <th>More Options</th> 
+          <th>Classid</th>  
+          <th>Class Name</th>    
+          <th>Delete Class</th> 
            
         </tr>
       </table>
 
       <div class= "col=3">
-            <input type="button" class="btn btn-danger btn-sm" value="Create Member" onclick= "window.location.href= 'createMember.html'"></input>
-            <input type="button" class="btn btn-danger btn-sm" value="Update Member" onclick= "window.location.href= 'updateMember.html'"></input>
+            <input type="button" class="btn btn-secondary btn-sm" value="Create Class" ></input>
+            <input type="button" class="btn btn-secondary btn-sm" value="Update Class" ></input>
         </div>
+
+        <table id="instructorTable" border="1">
+          <tr>
+            <th>Instructorid</th>  
+            <th>First Name</th>    
+            <th>Last Name</th> 
+             
+          </tr>
+        </table>
+
 
 
 
@@ -104,7 +113,7 @@ crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 crossorigin="anonymous"></script>
 
-<script src="members.js"></script>
+<script src="classes.js"></script>
 
 </body>
     </html>

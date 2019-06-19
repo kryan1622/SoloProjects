@@ -1,10 +1,8 @@
 package com.qa.persistence.repo;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import com.qa.persistence.domain.Instructors;
 import com.qa.persistence.repository.InstructorMapRepository;
 

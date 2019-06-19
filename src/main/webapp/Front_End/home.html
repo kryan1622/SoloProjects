@@ -3,12 +3,13 @@
         <head>
                 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
                     crossorigin="anonymous">
+                    <link rel="stylesheet" type="text/css" href="CSS/style.css">
             </head>
 
-    <body>
+             <body>
         
             <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-                    <a class="navbar-brand" href="home.html">
+                    <a class="navbar-brand" href="#">
                         <img src="gymicon.png" width="60" height="60" class="d-inline-block align-middle" alt="">
                         The Gym</a>
                   
@@ -19,15 +20,15 @@
                               Members
                             </a>
                             <div class="dropdown-menu">
-                              <a class="Create Member" href="createMember.html">Create member</a>
+                              <a class="dropdown" href="createMember.html">Create member</a>
                               <br>
-                              <a class="Get all Members" href="getAllMembers.html">Get all members</a>
+                              <a class="dropdown" href="getallMembers.html">Get all members</a>
                               <br>
-                              <a class="Update Member" href="updateMember.html">Update member</a>
+                              <a class="dropdown" href="updateMember.html">Update member</a>
                               <br>
-                              <a class="Find Member" href="#">Find member</a>
+                              <a class="dropdown" href="#">Find member</a>
                               <br>
-                              <a class="Delete Member" href="getAllMembers.html">Delete member</a>
+                              <a class="dropdown" href="getallMembers.html">Delete member</a>
                             </div>
                           </li>
                       <li class="nav-item dropdown">
@@ -35,15 +36,15 @@
                              Classes
                             </a>
                             <div class="dropdown-menu">
-                              <a class="Create class" href="#">Create Class</a>
+                              <a class="dropdown" href="#">Create Class</a>
                               <br>
-                              <a class="Get all Classes" href="#">Get all Classes</a>
+                              <a class="dropdown" href="getAllClasses.html">Get all Classes</a>
                               <br>
-                              <a class="Update Class" href="#">Update Class</a>
+                              <a class="dropdown" href="#">Update Class</a>
                               <br>
-                              <a class="Find CLass" href="#">Find Class</a>
+                              <a class="dropdown" href="#">Find Class</a>
                               <br>
-                              <a class="Delete CLass" href="#">Delete Class</a>
+                              <a class="dropdown" href="#">Delete Class</a>
                             </div>
                           </li>
                       <li class="nav-item dropdown">
@@ -51,15 +52,15 @@
                           Instructors
                         </a>
                         <div class="dropdown-menu">
-                                <a class="Create Instructor" href="#">Create Instructor</a>
+                                <a class="dropdown" href="createInstructor.html">Create Instructor</a>
                                 <br>
-                                <a class="Get all Instructors" href="#">Get all Instructors</a>
+                                <a class="dropdown" href="getAllInstructors.html">Get all Instructors</a>
                                 <br>
-                                <a class="Update Instructor" href="#">Update Instructor</a>
+                                <a class="dropdown" href="updateInstructor.html">Update Instructor</a>
                                 <br>
-                                <a class="Find Instructor" href="#">Find Instructor</a>
+                                <a class="dropdown" href="#">Find Instructor</a>
                                 <br>
-                                <a class="Delete Instructor" href="#">Delete Instructor</a>
+                                <a class="dropdown" href="#">Delete Instructor</a>
                               </div>
                             </li>
                         <div class="dropdown-menu">
@@ -72,31 +73,8 @@
                     </ul>
                   </nav>
                   <br>
-                    
 
-        <div class= "col=3">
-            <input type="button" class="btn btn-secondary btn-sm" value="Get all members." onclick= "getAllMembers()"></input>
-        </div>
-        </div>
-    </div>
-
-    <table id="membersTable" border="1">
-        <tr>
-          <th>Memberid</th>  
-          <th>First Name</th>    
-          <th>Last Name</th> 
-          <th>More Options</th> 
-           
-        </tr>
-      </table>
-
-      <div class= "col=3">
-            <input type="button" class="btn btn-secondary btn-sm" value="Create Member" onclick= "window.location.href= 'createMember.html'"></input>
-            <input type="button" class="btn btn-secondary btn-sm" value="Update Member" onclick= "window.location.href= 'updateMember.html'"></input>
-        </div>
-
-
-
+                  
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
@@ -104,7 +82,6 @@ crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 crossorigin="anonymous"></script>
 
-<script src="members.js"></script>
 
 </body>
     </html>

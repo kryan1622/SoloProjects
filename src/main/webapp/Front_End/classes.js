@@ -113,11 +113,11 @@ function getAllClasses() {
                  let myRow = document.createElement('tr');
                  container.appendChild(myRow);
                  let myInstructorid = document.createElement('td');
-                 myInstructorid.innerHTML = value[classiq].instructors.instructorid;
+                 myInstructorid.innerHTML = value[classiq-1].instructors.instructorid;
                  let myFirstName = document.createElement('td');
-                 myFirstName.innerHTML = value[classiq].instructors.firstname;
+                 myFirstName.innerHTML = value[classiq-1].instructors.firstname;
                  let myLastName = document.createElement('td');
-                 myLastName.innerHTML = value[classiq].instructors.lastname;
+                 myLastName.innerHTML = value[classiq-1].instructors.lastname;
     
                  myRow.appendChild(myInstructorid);
                 myRow.appendChild(myFirstName);
@@ -140,12 +140,14 @@ function getAllClasses() {
 
             }
         
-     function updateMember() {
-          let user = {
-              firstname: document.getElementById('firstname2').value,
-              lastname: document.getElementById('lastname2').value
+     function updateClass() {
+          let cla = {
+              classname: document.getElementById('classname2').value,
+              instructors: {
+                instructorid: Number(document.getElementById('instructorid2').value)
+              }
           };
-          let id = Number(document.getElementById("memberid").value);
-          makeRequest("PUT", "http://localhost:8080/SoloProj/api/members/updateMember/" + id, JSON.stringify(user)).then(resolve => { console.log(resolve) });
+          let id = Number(document.getElementById("classid2").value);
+          makeRequest("PUT", "http://localhost:8080/SoloProj/api/classes/updateClass/" + id, JSON.stringify(cla)).then(resolve => { console.log(resolve) });
        
      }

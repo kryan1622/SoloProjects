@@ -1,6 +1,9 @@
 package com.qa.persistence.repository;
 
 import static javax.transaction.Transactional.TxType.SUPPORTS;
+
+import java.util.Collection;
+
 import static javax.transaction.Transactional.TxType.REQUIRED;
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
@@ -10,7 +13,6 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import com.qa.persistence.domain.Instructors;
-import com.qa.persistence.domain.Members;
 import com.qa.util.JSONUtil;
 
 @Transactional(SUPPORTS)
@@ -34,7 +36,14 @@ public class InstructorDatabaseRepository implements InstructorRepository{
 	@Override
 	public String getAllInstructors() {
 		Query query =  manager.createQuery("SELECT i FROM Instructors i");
+		Collection <Instructors> instructors = (Collection<Instructors>) query.getResultList();
+		
+		if(instructors.isEmpty()) {
+			return "{\"message\": \"No instructors found\"}";	
+		}
+		else {
 		return j1.getJSONForObject(query.getResultList());
+	}
 	}
 
 	@Override
@@ -64,7 +73,6 @@ public class InstructorDatabaseRepository implements InstructorRepository{
 	@Transactional(REQUIRED)
 	public String deleteInstructor(int instructorid) {
 		String i1 = j1.getJSONForObject(manager.find(Instructors.class, instructorid));
-//		Instructors instructor = manager.find(Instructors.class, instructorid);
 		if (manager.contains(i1)) {
 			manager.remove(i1);		
 			return "{\"message\": \"Instructor sucessfully deleted " + instructorid + " \"}";

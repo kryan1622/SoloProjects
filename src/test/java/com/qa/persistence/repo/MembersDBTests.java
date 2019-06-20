@@ -8,7 +8,6 @@ import javax.persistence.Query;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -71,11 +70,16 @@ public class MembersDBTests {
 	}
 	
 	
-	@Ignore
+	
 	@Test
 	public void deleteMemberTest() {
+		List<Members> members = new ArrayList<>();
+		Members member = new Members(1,"Krystal", "Ryan");
+		members.add(member);
+		Mockito.when(manager.find(Members.class,1)).thenReturn(member);
+		Mockito.when(manager.contains(member)).thenReturn(true);
 		String reply = repo.deleteMember(1);
-		Assert.assertEquals("{\"message\": \"Member sucessfully deleted 1",reply);
+		Assert.assertEquals("{\"message\": \"Member sucessfully deleted 1 \"}",reply);
 		
 	}
 	

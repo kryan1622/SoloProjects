@@ -9,10 +9,7 @@ import com.qa.persistence.domain.Members;
 import com.qa.util.JSONUtil;
 import static javax.transaction.Transactional.TxType.REQUIRED;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
-
 import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Transactional(SUPPORTS)
 @Default
@@ -35,7 +32,14 @@ public class MembersDatabaseRepository implements MembersRepository{
 	@Override
 	public String getAllMembers() {
 		Query query =  manager.createQuery("SELECT m FROM Members m");
+		Collection <Members> members = (Collection<Members>) query.getResultList();
+		
+		if( members.isEmpty()) {
+			return "{\"message\": \"No members found\"}";
+		}
+		else {
 		return j1.getJSONForObject(query.getResultList());
+		}
 	}
 
 	@Override
@@ -44,17 +48,6 @@ public class MembersDatabaseRepository implements MembersRepository{
 	}
 	
 	
-	public String findMemberbyName(String firstname) {
-		Query query = manager.createQuery("SELECT m FROM Members m");
-		Collection<Members> members = (Collection<Members>) query.getResultList();
-		List<Members> result = members.stream().filter(n -> n.getFirstname().contains(firstname)).collect(Collectors.toList());
-		if (result.isEmpty()) {
-			return "{\"message\": \"No member found with this id" + result + "\"}";
-		}
-		else {
-			return j1.getJSONForObject(result);
-		}
-	}
 
 	@Override
 	@Transactional(REQUIRED)
@@ -100,6 +93,7 @@ public class MembersDatabaseRepository implements MembersRepository{
 	public void setJ1(JSONUtil j1) {
 		this.j1 = j1;
 	}
+
 
 	
 

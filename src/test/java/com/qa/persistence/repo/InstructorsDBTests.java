@@ -15,11 +15,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-
 import com.qa.persistence.domain.Instructors;
-import com.qa.persistence.domain.Members;
 import com.qa.persistence.repository.InstructorDatabaseRepository;
-import com.qa.persistence.repository.MembersDatabaseRepository;
 import com.qa.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -73,8 +70,13 @@ public class InstructorsDBTests {
     @Ignore
 	@Test
 	public void deleteInstructorTest() {
+    	List<Instructors> instructors = new ArrayList<>();
+		Instructors instructor = new Instructors(1,"Harry", "Buck");
+		instructors.add(instructor);
+		Mockito.when(manager.find(Instructors.class,1)).thenReturn(instructor);
+		Mockito.when(manager.contains(instructor)).thenReturn(true);
 		String reply = repo.deleteInstructor(1);
-		Assert.assertEquals("{\"message\": \"Instructor sucessfully deleted 1",reply);
+		Assert.assertEquals("{\"message\": \"Instructor sucessfully deleted 1 \"}",reply);
 		
 	}
 	

@@ -34,7 +34,6 @@ function getAllMembers() {
 
         let data = JSON.stringify(value);
         const container = document.getElementById('membersTable');
-        console.log(value[0]);
 
         if (container.rows.length > 1) {
 

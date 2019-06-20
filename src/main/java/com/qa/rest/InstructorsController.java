@@ -41,7 +41,7 @@ public class InstructorsController {
 	@Path("/updateInstructor/{instructorid}")
 	@PUT
 	@Produces({"application/json"})
-	public String updateMember(@PathParam("instructorid")int instructorid, String Instructors) {
+	public String updateInstructor(@PathParam("instructorid")int instructorid, String Instructors) {
 		return service.updateInstructor(instructorid, Instructors);
 	}
 	

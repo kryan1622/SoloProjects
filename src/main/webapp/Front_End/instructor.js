@@ -19,23 +19,22 @@ function makeRequest(method, url, body) {
     })
 }
 
-function createMember() {
-    let user = {
+function createInstructor() {
+    let instructor = {
         firstname: document.getElementById('firstname').value,
         lastname: document.getElementById('lastname').value
     };
-    makeRequest("Post", "http://localhost:8080/SoloProj/api/members/createMember", JSON.stringify(user)).then(resolve => { console.log(resolve) });
+    makeRequest("Post", "http://localhost:8080/SoloProj/api/instructors/createInstructor", JSON.stringify(instructor)).then(resolve => { console.log(resolve) });
 
 }
 
 
-function getAllMembers() {
-    makeRequest("GET", "http://localhost:8080/SoloProj/api/members/getAllMembers").then(value => {
+function getAllInstructors() {
+    makeRequest("GET", "http://localhost:8080/SoloProj/api/instructors/getAllInstructors").then(value => {
 
         let data = JSON.stringify(value);
-        const container = document.getElementById('membersTable');
-        console.log(value[0]);
-
+        const container = document.getElementById('instructorsTable');
+    
         if (container.rows.length > 1) {
 
             let tableSize = container.rows.length;
@@ -48,14 +47,14 @@ function getAllMembers() {
         for (let i = 0; i < value.length; i++) {
             let myRow = document.createElement('tr');
             container.appendChild(myRow);
-            let myMemberid = document.createElement('td');
-            myMemberid.innerHTML = value[i].memberid;
+            let myInstructorid = document.createElement('td');
+            myInstructorid.innerHTML = value[i].instructorid;
             let myFirstName = document.createElement('td');
             myFirstName.innerHTML = value[i].firstname;
             let myLastName = document.createElement('td');
             myLastName.innerHTML = value[i].lastname;
 
-            myRow.appendChild(myMemberid);
+            myRow.appendChild(myInstructorid);
             myRow.appendChild(myFirstName);
             myRow.appendChild(myLastName);
 
@@ -64,8 +63,8 @@ function getAllMembers() {
             let detail = document.createElement('td');
             let detailButton = document.createElement('button');
 
-            detailButton.id = value[i].memberid;
-            detailButton.innerText = "Delete Member";
+            detailButton.id = value[i].instructorid;
+            detailButton.innerText = "Delete Instructor";
             detailButton.onclick = detailButtonHandler;
             detail.innerHTML = detailButton;
 
@@ -89,25 +88,24 @@ function getAllMembers() {
 const detailButtonHandler = () => {
 
 
-    sessionStorage.setItem('memberid', event.target.id)
+    sessionStorage.setItem('instructorid', event.target.id)
    
 
 
 
-        const memberiq = sessionStorage.getItem('memberid');
+        const instructoriq = sessionStorage.getItem('instructorid');
 
 
-        makeRequest("DELETE", "http://localhost:8080/SoloProj/api/members/deleteMember/" + memberiq).then(resolve => { console.log(resolve) });
+        makeRequest("DELETE", "http://localhost:8080/SoloProj/api/instructors/deleteInstructor/" + instructoriq).then(resolve => { console.log(resolve) });
 
 }
 
-    function updateMember() {
-        let user = {
+    function updateInstructor() {
+        let instructor = {
             firstname: document.getElementById('firstname2').value,
             lastname: document.getElementById('lastname2').value
         };
-        let id = Number(document.getElementById("memberid").value);
-        makeRequest("PUT", "http://localhost:8080/SoloProj/api/members/updateMember/" + id, JSON.stringify(user)).then(resolve => { console.log(resolve) });
+        let id = Number(document.getElementById("instructorid").value);
+        makeRequest("PUT", "http://localhost:8080/SoloProj/api/instructors/updateInstructor/" + id, JSON.stringify(instructor)).then(resolve => { console.log(resolve) });
        
     }
-

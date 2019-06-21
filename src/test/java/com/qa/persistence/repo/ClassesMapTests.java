@@ -16,8 +16,8 @@ public class ClassesMapTests {
 	@Before
 	public void setup() {
 	cmr = new ClassesMapRepository();
-	class1 = new Classes(1, "Balletfit", null);
-	class2= new Classes(2, "Zumba", null);
+	class1 = new Classes(1, "Balletfit");
+	class2= new Classes(2, "Zumba");
 }
 	
 	@Test

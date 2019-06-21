@@ -11,7 +11,7 @@ import com.qa.util.JSONUtil;
 @Alternative 
 public class ClassesMapRepository implements ClassesRepository{
 	
-	private Map<Integer,Classes> classMap = new HashMap<Integer,Classes>();
+	private Map<Integer,Classes> classMap = new HashMap<>();
 	JSONUtil j1 = new JSONUtil();
 	
 	public Map<Integer, Classes> getclassMap(){

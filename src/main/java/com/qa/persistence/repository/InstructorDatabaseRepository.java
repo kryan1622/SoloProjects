@@ -1,10 +1,6 @@
 package com.qa.persistence.repository;
-
 import static javax.transaction.Transactional.TxType.SUPPORTS;
-
 import java.util.Collection;
-import java.util.Set;
-
 import static javax.transaction.Transactional.TxType.REQUIRED;
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
@@ -12,8 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
-
-import com.qa.persistence.domain.Classes;
 import com.qa.persistence.domain.Instructors;
 import com.qa.util.JSONUtil;
 
@@ -29,8 +23,8 @@ public class InstructorDatabaseRepository implements InstructorRepository{
 
 	@Override
 	@Transactional(REQUIRED)
-	public String createInstructor(String Instructors) {
-		Instructors ainstructor = j1.getObjectForJSON(Instructors, Instructors.class);
+	public String createInstructor(String instructors) {
+		Instructors ainstructor = j1.getObjectForJSON(instructors, Instructors.class);
 		manager.persist(ainstructor);
 		return "{\"message\": \"Instructor has been successfully added\"}";	
 	}
@@ -57,9 +51,9 @@ public class InstructorDatabaseRepository implements InstructorRepository{
 
 	@Override
 	@Transactional(REQUIRED)
-	public String updateInstructor(int instructorid, String Instructors) {
+	public String updateInstructor(int instructorid, String instructors) {
     Instructors oldinstructor = manager.find(Instructors.class, instructorid);
-    Instructors newinstructor = j1.getObjectForJSON(Instructors, Instructors.class);
+    Instructors newinstructor = j1.getObjectForJSON(instructors, Instructors.class);
 		    if (oldinstructor != null) {
 		    	oldinstructor.setFirstname(newinstructor.getFirstname());
 		    	oldinstructor.setLastname(newinstructor.getLastname());

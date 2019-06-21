@@ -11,14 +11,14 @@ import com.qa.util.JSONUtil;
 @Alternative
 public class InstructorMapRepository implements InstructorRepository{
 
-		private Map<Integer,Instructors> instructorsMap = new HashMap<Integer,Instructors>();
+		private Map<Integer,Instructors> instructorsMap = new HashMap<>();
 		JSONUtil j1 = new JSONUtil();
 		
 		public Map<Integer, Instructors> getinstructorsMap(){
 			return instructorsMap;
 		}
-		public String createInstructor(String Instructors) {
-			Instructors i1 = j1.getObjectForJSON(Instructors, Instructors.class);
+		public String createInstructor(String instructors) {
+			Instructors i1 = j1.getObjectForJSON(instructors, Instructors.class);
 			instructorsMap.put(i1.getInstructorid(), i1);
 				return "Instructor successfully created";	
 			}
@@ -32,8 +32,8 @@ public class InstructorMapRepository implements InstructorRepository{
 		}
 		
 		
-		public String updateInstructor(int instructorid, String Instructors) {
-		 Instructors i2 = j1.getObjectForJSON(Instructors, Instructors.class);
+		public String updateInstructor(int instructorid, String instructors) {
+		 Instructors i2 = j1.getObjectForJSON(instructors, Instructors.class);
 
 			if (instructorsMap.containsKey(instructorid)) {
 				instructorsMap.replace(instructorid, i2);

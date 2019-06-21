@@ -6,35 +6,32 @@ import com.qa.persistence.repository.ClassesRepository;
 public class ClassesServiceImpl implements ClassesService{
 
 	@Inject
-	private ClassesRepository CR;
+	private ClassesRepository cr;
 	
 	
 	@Override
 	public String getAllClasses() {
-		return CR.getAllClasses();
+		return cr.getAllClasses();
 	}
 
 	@Override
 	public String findClass(int classid) {
-		return CR.findClass(classid);
+		return cr.findClass(classid);
 	}
 
 	@Override
 	public String deleteClass(int classid) {
-	return CR.deleteClass(classid);
+	return cr.deleteClass(classid);
 	}
 
 	@Override
 	public String updateClass(int classid, String Classes) {
-	return CR.updateClass(classid, Classes);
+	return cr.updateClass(classid, Classes);
 	}
 
 	@Override
 	public String createClass(String Classes) {
-		return CR.createClass(Classes);
+		return cr.createClass(Classes);
 	}
-
-	
-	
 
 }

@@ -59,18 +59,6 @@ function getAllInstructors() {
             myRow.appendChild(myInstructorid);
             myRow.appendChild(myFirstName);
             myRow.appendChild(myLastName);
-
-
-
-            let detail = document.createElement('td');
-            let detailButton = document.createElement('button');
-
-            detailButton.id = value[i].instructorid;
-            detailButton.innerText = "Delete Instructor";
-            detailButton.onclick = detailButtonHandler;
-            detail.innerHTML = detailButton;
-
-            myRow.appendChild(detailButton);
         }
 
     })

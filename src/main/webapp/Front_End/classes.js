@@ -33,10 +33,8 @@ function createClass() {
 
 function getAllClasses() {
     makeRequest("GET", "http://localhost:8080/SoloProj/api/classes/getAllClasses").then(value => {
-
-        let data = JSON.stringify(value);
         const container = document.getElementById('classTable');
-        console.log(value[0].instructors.instructorid);
+    
 
          if (container.rows.length > 1) {
 
@@ -96,9 +94,7 @@ function getAllClasses() {
 
 
          makeRequest("GET", "http://localhost:8080/SoloProj/api/classes/getAllClasses").then(value => {
-            // let data = JSON.stringify(value);
             const container = document.getElementById('instructorTable');
-            
     
              if (container.rows.length > 1) {
     
@@ -109,7 +105,7 @@ function getAllClasses() {
     
             }
     
-            //  for (let i = 0; i < 1; i++) {
+            
                  let myRow = document.createElement('tr');
                  container.appendChild(myRow);
                  let myInstructorid = document.createElement('td');
@@ -123,7 +119,7 @@ function getAllClasses() {
                 myRow.appendChild(myFirstName);
                 myRow.appendChild(myLastName);
         
-                // }
+            
 
             })
             .catch((error) => console.log(error.message));
@@ -151,3 +147,59 @@ function getAllClasses() {
           makeRequest("PUT", "http://localhost:8080/SoloProj/api/classes/updateClass/" + id, JSON.stringify(cla)).then(resolve => { console.log(resolve) });
        
      }
+
+     function findClass(){
+         let id=Number(document.getElementById('classid3').value)
+        makeRequest("GET", "http://localhost:8080/SoloProj/api/classes/findClass/" +id).then(value => {
+     
+        const container = document.getElementById('classTable');
+
+        if (container.rows.length > 1) {
+
+            let tableSize = container.rows.length;
+            for (i = tableSize; i > 1; i--) {
+                container.deleteRow(i - 1);
+            }
+
+       }
+            let myRow = document.createElement('tr');
+            container.appendChild(myRow);
+            let myClassid = document.createElement('td');
+            myClassid.innerHTML = value.classid;
+            let myClassName = document.createElement('td');
+            myClassName.innerHTML = value.classname;
+
+            myRow.appendChild(myClassid);
+           myRow.appendChild(myClassName);
+   
+
+
+
+         let detail = document.createElement('td');
+            let detailButton = document.createElement('button');
+
+            detailButton.id = value.classid;
+           detailButton.innerText = "Instructor information";
+            detailButton.onclick = detailButtonHandler;
+            detail.innerHTML = detailButton;
+
+            myRow.appendChild(detailButton);
+
+            let detail2 = document.createElement('td');
+            let detail2Button2 = document.createElement('button');
+
+            detail2Button2.id = value.classid;
+            detail2Button2.innerText = "Delete Class";
+            detail2Button2.onclick = detail2Button2Handler;
+            detail2.innerHTML = detail2Button2;
+
+            myRow.appendChild(detail2Button2);
+
+
+    })
+        .catch((error) => console.log(error.message));
+    return false;
+}
+
+
+   

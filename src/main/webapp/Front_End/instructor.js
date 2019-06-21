@@ -69,15 +69,6 @@ function getAllInstructors() {
             detail.innerHTML = detailButton;
 
             myRow.appendChild(detailButton);
-
-            // let detail2 = document.createElement('td');
-            // let detail2Button2 = document.createElement('button');
-
-            //     detail2Button2.id = value[i].memberid;
-            // detail2Button2.innerText = "Update Member";
-            // detail2.innerHTML = detail2Button2;
-
-            // myRow.appendChild(detail2Button2);
         }
 
     })
@@ -109,3 +100,51 @@ const detailButtonHandler = () => {
         makeRequest("PUT", "http://localhost:8080/SoloProj/api/instructors/updateInstructor/" + id, JSON.stringify(instructor)).then(resolve => { console.log(resolve) });
        
     }
+
+    function findInstructor(){
+        let id=Number(document.getElementById('instructorid3').value)
+       makeRequest("GET", "http://localhost:8080/SoloProj/api/instructors/findInstructor/" +id).then(value => {
+    
+       const container = document.getElementById('instructorsTable');
+
+
+       if (container.rows.length > 1) {
+
+           let tableSize = container.rows.length;
+           for (i = tableSize; i > 1; i--) {
+               container.deleteRow(i - 1);
+           }
+
+      }
+           let myRow = document.createElement('tr');
+           container.appendChild(myRow);
+           let myInstructorid = document.createElement('td');
+           myInstructorid.innerHTML = value.instructorid;
+           let myFirstName = document.createElement('td');
+           myFirstName.innerHTML = value.firstname;
+           let myLastName = document.createElement('td');
+           myLastName.innerHTML = value.lastname;
+
+           myRow.appendChild(myInstructorid);
+          myRow.appendChild(myFirstName);
+          myRow.appendChild(myLastName);
+  
+
+
+
+        let detail = document.createElement('td');
+           let detailButton = document.createElement('button');
+
+           detailButton.id = value.instructorid;
+          detailButton.innerText = "Delete Instructor";
+           detailButton.onclick = detailButtonHandler;
+           detail.innerHTML = detailButton;
+
+           myRow.appendChild(detailButton);
+
+
+
+   })
+       .catch((error) => console.log(error.message));
+   return false;
+}

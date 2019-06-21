@@ -26,8 +26,6 @@
                   <br>
                   <a class="dropdown" href="updateMember.html">Update member</a>
                   <br>
-                  <a class="dropdown" href="#">Find member</a>
-                  <br>
                   <a class="dropdown" href="getallMembers.html">Delete member</a>
                 </div>
               </li>
@@ -41,8 +39,6 @@
                   <a class="dropdown" href="getAllClasses.html">Get all Classes</a>
                   <br>
                   <a class="dropdown" href="updateClass.html">Update Class</a>
-                  <br>
-                  <a class="dropdown" href="#">Find Class</a>
                   <br>
                   <a class="dropdown" href="getAllClasses.html">Delete Class</a>
                 </div>
@@ -58,8 +54,6 @@
                     <br>
                     <a class="dropdown" href="updateInstructor.html">Update Instructor</a>
                     <br>
-                    <a class="dropdown" href="#">Find Instructor</a>
-                    <br>
                     <a class="dropdown" href="getAllInstructors.html">Delete Instructor</a>
                   </div>
                 </li>
@@ -73,9 +67,24 @@
         </ul>
       </nav>
       <br>
-                    
 
 
+      <div>
+          <div id="button3">
+          <div class="container mx-auto">
+              <div class="form-group">
+                <div class="form-group col-md-6">
+                  <label for="input class id">Find Member</label>
+                  <input type="text" class="form-control" id="memberid3" placeholder="classid">
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div id="button4">
+      <input type="button" class="btn btn-secondary btn-sm" value="Find Member." onclick="findMember()"></input>
+      </div>
+      <div id="allignment">
     <table id="membersTable" border="1">
         <tr>
           <th>Memberid</th>  
@@ -85,13 +94,14 @@
            
         </tr>
       </table>
+    </div>
 
-      <div class= "col=3">
+      <div id="button2">
             <input type="button" class="btn btn-secondary btn-sm" value="Create Member" onclick= "window.location.href= 'createMember.html'"></input>
             <input type="button" class="btn btn-secondary btn-sm" value="Update Member" onclick= "window.location.href= 'updateMember.html'"></input>
               <input type="button" class="btn btn-secondary btn-sm" value="Refresh List." onclick= "getAllMembers()"></input>
       </div>
-          </div>
+
 
 
 

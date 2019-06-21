@@ -2,3 +2,43 @@
     color: grey
 }
 
+#allignment{
+   padding-top: 15px;
+   margin-left:auto;
+   margin-right:auto;
+   width:40%;
+}
+
+#allignment1{
+    padding-top: 15px;
+    margin-left:auto;
+    margin-right:auto;
+    width:28%;
+ }
+
+#button{
+    padding-top:15px;
+    margin-left:auto;
+    margin-right:auto;
+    width:30%;
+}
+
+#button2{
+    padding-top:15px;
+    margin-left:auto;
+    margin-right:auto;
+    width:37%;
+}
+
+#button3{
+    margin-left:auto;
+    margin-right:auto;
+    width:24%;
+}
+
+#button4{
+    margin-left:auto;
+    margin-right:auto;
+    width:19%;
+}
+

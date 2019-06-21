@@ -17,8 +17,8 @@ public class ClassesMapRepository implements ClassesRepository{
 	public Map<Integer, Classes> getclassMap(){
 		return classMap;
 	}
-	public String createClass(String Classes) {
-		Classes c1 = j1.getObjectForJSON(Classes, Classes.class);
+	public String createClass(String classes) {
+		Classes c1 = j1.getObjectForJSON(classes, Classes.class);
 		classMap.put(c1.getClassid(), c1);
 			return "Class successfully created";	
 		}
@@ -32,8 +32,8 @@ public class ClassesMapRepository implements ClassesRepository{
 	}
 	
 	
-	public String updateClass(int classid, String Class) {
-		Classes c2 = j1.getObjectForJSON(Class, Classes.class);
+	public String updateClass(int classid, String classes) {
+		Classes c2 = j1.getObjectForJSON(classes, Classes.class);
 
 		if (classMap.containsKey(classid)) {
 			classMap.replace(classid, c2);

@@ -39,8 +39,8 @@ public class ClassesDatabaseRepository implements ClassesRepository{
 
 	@Override
 	@Transactional(REQUIRED)
-	public String createClass(String Class) {
-		Classes newclass = j1.getObjectForJSON(Class, Classes.class);
+	public String createClass(String classes) {
+		Classes newclass = j1.getObjectForJSON(classes, Classes.class);
 		manager.persist(newclass);
 		return "{\"message\": \"Class has been successfully added\"}";
 	}
@@ -53,9 +53,9 @@ public class ClassesDatabaseRepository implements ClassesRepository{
 
 	@Override
 	@Transactional(REQUIRED)
-	public String updateClass(int classid, String Classes) {
+	public String updateClass(int classid, String classes) {
     Classes oldclass = manager.find(Classes.class, classid);
-    Classes newclass = j1.getObjectForJSON(Classes, Classes.class);
+    Classes newclass = j1.getObjectForJSON(classes, Classes.class);
     if (oldclass != null) {
     	oldclass.setClassname(newclass.getClassname());
     	manager.persist(oldclass);

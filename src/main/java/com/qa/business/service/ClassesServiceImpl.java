@@ -25,13 +25,13 @@ public class ClassesServiceImpl implements ClassesService{
 	}
 
 	@Override
-	public String updateClass(int classid, String Classes) {
-	return cr.updateClass(classid, Classes);
+	public String updateClass(int classid, String classes) {
+	return cr.updateClass(classid, classes);
 	}
 
 	@Override
-	public String createClass(String Classes) {
-		return cr.createClass(Classes);
+	public String createClass(String classes) {
+		return cr.createClass(classes);
 	}
 
 }

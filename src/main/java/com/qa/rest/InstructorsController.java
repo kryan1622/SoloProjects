@@ -41,15 +41,15 @@ public class InstructorsController {
 	@Path("/updateInstructor/{instructorid}")
 	@PUT
 	@Produces({"application/json"})
-	public String updateInstructor(@PathParam("instructorid")int instructorid, String Instructors) {
-		return service.updateInstructor(instructorid, Instructors);
+	public String updateInstructor(@PathParam("instructorid")int instructorid, String instructors) {
+		return service.updateInstructor(instructorid, instructors);
 	}
 	
 	@Path("/createInstructor")
 	@POST
 	@Produces({"application/json"})
-	public String createInstructor(String Instructor) {
-		return service.createInstructor(Instructor);
+	public String createInstructor(String instructor) {
+		return service.createInstructor(instructor);
 	}
 	}
 

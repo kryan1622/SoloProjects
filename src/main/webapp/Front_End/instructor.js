@@ -25,7 +25,7 @@ function createInstructor() {
         lastname: document.getElementById('lastname').value
     };
     makeRequest("Post", "http://34.65.166.135:8888/SoloProj/api/instructors/createInstructor", JSON.stringify(instructor)).then(resolve => { 
-    document.getElementById("result").innerText="Instructor successfully created";
+        window.location.href="getAllInstructors.html";
 });
 
 }
@@ -100,7 +100,7 @@ const detailButtonHandler = () => {
         };
         let id = Number(document.getElementById("instructorid").value);
         makeRequest("PUT", "http://34.65.166.135:8888/SoloProj/api/instructors/updateInstructor/" + id, JSON.stringify(instructor)).then(resolve => { console.log(resolve) });
-       
+        window.location.href="getAllInstructors.html";
     }
 
     function findInstructor(){

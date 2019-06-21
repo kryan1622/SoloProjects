@@ -1,7 +1,8 @@
-INSERT INTO MEMBERS (memberid, firstname, lastname) VALUES (1234, 'John', 'Doe');
-INSERT INTO MEMBERS (memberid, firstname, lastname) VALUES (1235, 'Jane', 'Doe');
-INSERT INTO MEMBERS (memberid, firstname, lastname) VALUES (1236, 'Jim', 'Taylor');
-
+INSERT INTO MEMBERS (memberid, firstname, lastname) VALUES (1, 'Owen', 'Miller');
+INSERT INTO MEMBERS (memberid, firstname, lastname) VALUES (2, 'Karishma', 'Patel');
+INSERT INTO MEMBERS (memberid, firstname, lastname) VALUES (3, 'Jack', 'Flanagen');
+INSERT INTO MEMBERS (memberid, firstname, lastname) VALUES (4, 'Matt', 'Hunt');
+INSERT INTO MEMBERS (memberid, firstname, lastname) VALUES (5, 'Chester', 'Gardner');
 
 INSERT INTO INSTRUCTORS (instructorid, firstname, lastname) VALUES (1,'Josh','Brooks');
 INSERT INTO INSTRUCTORS (instructorid, firstname, lastname) VALUES (2,'Marc','Parington');

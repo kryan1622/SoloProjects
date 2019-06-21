@@ -25,7 +25,8 @@ function createMember() {
         lastname: document.getElementById('lastname').value
     };
     makeRequest("Post", "http://34.65.166.135:8888/SoloProj/api/members/createMember", JSON.stringify(user)).then(resolve => {  
-    document.getElementById("result").innerText="Member successfully created";
+ window.location.href="getAllMembers.html";
+   
 });
 }
 
@@ -98,8 +99,9 @@ const detailButtonHandler = () => {
             lastname: document.getElementById('lastname2').value
         };
         let id = Number(document.getElementById("memberid").value);
-        makeRequest("PUT", "http://34.65.166.135:8888/SoloProj/api/members/updateMember/" + id, JSON.stringify(user)).then(resolve => { console.log(resolve) });
-       
+        makeRequest("PUT", "http://34.65.166.135:8888/SoloProj/api/members/updateMember/" + id, JSON.stringify(user)).then(resolve => {  
+        window.location.href="getAllInstructors.html";
+    });
     }
 
 

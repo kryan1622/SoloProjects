@@ -67,18 +67,6 @@ public class InstructorsDBTests {
 		Assert.assertEquals("{\"message\": \"Instructor has been successfully added\"}",repo.createInstructor(INSTRUCTOROBJECT));
 	}
 	
-    @Ignore
-	@Test
-	public void deleteInstructorTest() {
-    	List<Instructors> instructors = new ArrayList<>();
-		Instructors instructor = new Instructors(1,"Harry", "Buck");
-		instructors.add(instructor);
-		Mockito.when(manager.find(Instructors.class,1)).thenReturn(instructor);
-		Mockito.when(manager.contains(instructor)).thenReturn(true);
-		String reply = repo.deleteInstructor(1);
-		Assert.assertEquals("{\"message\": \"Instructor sucessfully deleted 1 \"}",reply);
-		
-	}
 	
 	@Test
 	public void updateInstructorTest() {

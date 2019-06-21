@@ -99,7 +99,7 @@ const detailButtonHandler = () => {
         };
         let id = Number(document.getElementById("memberid").value);
         makeRequest("PUT", "http://34.65.166.135:8888/SoloProj/api/members/updateMember/" + id, JSON.stringify(user)).then(resolve => {  
-        window.location.href="getAllInstructors.html";
+        window.location.href="getAllMembers.html";
     });
     }
 

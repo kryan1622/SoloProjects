@@ -8,31 +8,31 @@ import com.qa.persistence.repository.InstructorRepository;
 public class InstructorsServiceImpl implements InstructorsService{
 
 	@Inject
-	private InstructorRepository IR;
+	private InstructorRepository ir;
 
 	@Override
 	public String getAllInstructors() {
-		return IR.getAllInstructors();
+		return ir.getAllInstructors();
 	}
 
 	@Override
 	public String findInstructor(int instructorid) {
-		return IR.findInstructor(instructorid);
+		return ir.findInstructor(instructorid);
 	}
 
 	@Override
 	public String deleteInstructor(int instructorid) {
-		return IR.deleteInstructor(instructorid);
+		return ir.deleteInstructor(instructorid);
 	}
 
 	@Override
 	public String updateInstructor(int instructorid, String Instructors) {
-	return IR.updateInstructor(instructorid, Instructors);
+	return ir.updateInstructor(instructorid, Instructors);
 	}
 
 	@Override
 	public String createInstructor(String Instructors) {
-	return IR.createInstructor(Instructors);
+	return ir.createInstructor(Instructors);
 	}
 	
 

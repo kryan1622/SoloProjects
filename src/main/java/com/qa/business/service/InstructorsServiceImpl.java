@@ -26,13 +26,13 @@ public class InstructorsServiceImpl implements InstructorsService{
 	}
 
 	@Override
-	public String updateInstructor(int instructorid, String Instructors) {
-	return ir.updateInstructor(instructorid, Instructors);
+	public String updateInstructor(int instructorid, String instructors) {
+	return ir.updateInstructor(instructorid, instructors);
 	}
 
 	@Override
-	public String createInstructor(String Instructors) {
-	return ir.createInstructor(Instructors);
+	public String createInstructor(String instructors) {
+	return ir.createInstructor(instructors);
 	}
 	
 

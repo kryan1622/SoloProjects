@@ -24,13 +24,13 @@ function createInstructor() {
         firstname: document.getElementById('firstname').value,
         lastname: document.getElementById('lastname').value
     };
-    makeRequest("Post", "http://localhost:8080/SoloProj/api/instructors/createInstructor", JSON.stringify(instructor)).then(resolve => { console.log(resolve) });
+    makeRequest("Post", "http://34.65.166.135:8888/SoloProj/api/instructors/createInstructor", JSON.stringify(instructor)).then(resolve => { console.log(resolve) });
 
 }
 
 
 function getAllInstructors() {
-    makeRequest("GET", "http://localhost:8080/SoloProj/api/instructors/getAllInstructors").then(value => {
+    makeRequest("GET", "http://34.65.166.135:8888/SoloProj/api/instructors/getAllInstructors").then(value => {
 
         let data = JSON.stringify(value);
         const container = document.getElementById('instructorsTable');
@@ -87,7 +87,7 @@ const detailButtonHandler = () => {
         const instructoriq = sessionStorage.getItem('instructorid');
 
 
-        makeRequest("DELETE", "http://localhost:8080/SoloProj/api/instructors/deleteInstructor/" + instructoriq).then(resolve => { console.log(resolve) });
+        makeRequest("DELETE", "http://34.65.166.135:8888/SoloProj/api/instructors/deleteInstructor/" + instructoriq).then(resolve => { console.log(resolve) });
 
 }
 
@@ -97,13 +97,13 @@ const detailButtonHandler = () => {
             lastname: document.getElementById('lastname2').value
         };
         let id = Number(document.getElementById("instructorid").value);
-        makeRequest("PUT", "http://localhost:8080/SoloProj/api/instructors/updateInstructor/" + id, JSON.stringify(instructor)).then(resolve => { console.log(resolve) });
+        makeRequest("PUT", "http://34.65.166.135:8888/SoloProj/api/instructors/updateInstructor/" + id, JSON.stringify(instructor)).then(resolve => { console.log(resolve) });
        
     }
 
     function findInstructor(){
         let id=Number(document.getElementById('instructorid3').value)
-       makeRequest("GET", "http://localhost:8080/SoloProj/api/instructors/findInstructor/" +id).then(value => {
+       makeRequest("GET", "http://34.65.166.135:8888/SoloProj/api/instructors/findInstructor/" +id).then(value => {
     
        const container = document.getElementById('instructorsTable');
 

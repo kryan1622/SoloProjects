@@ -26,13 +26,14 @@ function createClass() {
             instructorid: Number(document.getElementById('instructorid').value)
         } 
     };
-    makeRequest("Post", "http://localhost:8080/SoloProj/api/classes/createClass", JSON.stringify(cla)).then(resolve => { console.log(resolve) });
-
+    makeRequest("Post", "http://34.65.166.135:8888/SoloProj/api/classes/createClass", JSON.stringify(cla)).then(resolve => { console.log(resolve) 
+document.getElementById("result").innerText=resolve;
+});
 }
 
 
 function getAllClasses() {
-    makeRequest("GET", "http://localhost:8080/SoloProj/api/classes/getAllClasses").then(value => {
+    makeRequest("GET", "http://34.65.166.135:8888/SoloProj/api/classes/getAllClasses").then(value => {
         const container = document.getElementById('classTable');
     
 
@@ -93,7 +94,7 @@ function getAllClasses() {
          const classiq = sessionStorage.getItem('classid');
 
 
-         makeRequest("GET", "http://localhost:8080/SoloProj/api/classes/getAllClasses").then(value => {
+         makeRequest("GET", "http://34.65.166.135:8888/SoloProj/api/classes/getAllClasses").then(value => {
             const container = document.getElementById('instructorTable');
     
              if (container.rows.length > 1) {
@@ -132,7 +133,7 @@ function getAllClasses() {
        
                 const classiq = sessionStorage.getItem('classid');
 
-                makeRequest("DELETE", "http://localhost:8080/SoloProj/api/classes/deleteClass/" + classiq).then(resolve => { console.log(resolve) });
+                makeRequest("DELETE", "http://34.65.166.135:8888/SoloProj/api/classes/deleteClass/" + classiq).then(resolve => { console.log(resolve) });
 
             }
         
@@ -144,13 +145,13 @@ function getAllClasses() {
               }
           };
           let id = Number(document.getElementById("classid2").value);
-          makeRequest("PUT", "http://localhost:8080/SoloProj/api/classes/updateClass/" + id, JSON.stringify(cla)).then(resolve => { console.log(resolve) });
+          makeRequest("PUT", "http://34.65.166.135:8888/SoloProj/api/classes/updateClass/" + id, JSON.stringify(cla)).then(resolve => { console.log(resolve) });
        
      }
 
      function findClass(){
          let id=Number(document.getElementById('classid3').value)
-        makeRequest("GET", "http://localhost:8080/SoloProj/api/classes/findClass/" +id).then(value => {
+        makeRequest("GET", "http://34.65.166.135:8888/SoloProj/api/classes/findClass/" +id).then(value => {
      
         const container = document.getElementById('classTable');
 

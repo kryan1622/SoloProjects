@@ -25,7 +25,7 @@ function createInstructor() {
         lastname: document.getElementById('lastname').value
     };
     makeRequest("Post", "http://34.65.166.135:8888/SoloProj/api/instructors/createInstructor", JSON.stringify(instructor)).then(resolve => { 
-    document.getElementById("result").innerText=resolve;
+    document.getElementById("result").innerText="Instructor successfully created";
 });
 
 }

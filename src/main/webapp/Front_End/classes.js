@@ -27,7 +27,7 @@ function createClass() {
         } 
     };
     makeRequest("Post", "http://34.65.166.135:8888/SoloProj/api/classes/createClass", JSON.stringify(cla)).then(value => {
-document.getElementById("result").innerText=value;
+document.getElementById("result").innerText="Class successfully added";
 });
 }
 

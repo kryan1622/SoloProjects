@@ -25,7 +25,7 @@ function createMember() {
         lastname: document.getElementById('lastname').value
     };
     makeRequest("Post", "http://34.65.166.135:8888/SoloProj/api/members/createMember", JSON.stringify(user)).then(resolve => {  
-    document.getElementById("result").innerText=resolve;
+    document.getElementById("result").innerText="Member successfully created";
 });
 }
 

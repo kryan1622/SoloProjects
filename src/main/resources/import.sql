@@ -10,6 +10,6 @@ INSERT INTO INSTRUCTORS (instructorid, firstname, lastname) VALUES (3, 'Rich', '
 INSERT INTO INSTRUCTORS (instructorid, firstname, lastname) VALUES (4,'Harry','Buck');
 
 INSERT INTO CLASSES (classid, classname, instructors_instructorid) VALUES (1, 'HIIT', 2);
-INSERT INTO CLASSES (classid, classname, instructors_instructorid) VALUES (2, 'Zumba', 1);
+INSERT INTO CLASSES (classid, classname, instructors_instructorid) VALUES (2, 'Zumba', 4);
 INSERT INTO CLASSES (classid, classname, instructors_instructorid) VALUES (3, 'Insanity', 3);
-INSERT INTO CLASSES (classid, classname, instructors_instructorid) VALUES (4, 'Balletfit', 2);
+INSERT INTO CLASSES (classid, classname, instructors_instructorid) VALUES (4, 'Balletfit', 1);

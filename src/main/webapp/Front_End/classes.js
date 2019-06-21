@@ -26,8 +26,8 @@ function createClass() {
             instructorid: Number(document.getElementById('instructorid').value)
         } 
     };
-    makeRequest("Post", "http://34.65.166.135:8888/SoloProj/api/classes/createClass", JSON.stringify(cla)).then(value => {
-document.getElementById("result").innerText="Class successfully added";
+    makeRequest("Post", "http://34.65.166.135:8888/SoloProj/api/classes/createClass", JSON.stringify(cla)).then(resolve => {
+window.location.href="getallClasses.html";
 });
 }
 
@@ -145,8 +145,9 @@ function getAllClasses() {
               }
           };
           let id = Number(document.getElementById("classid2").value);
-          makeRequest("PUT", "http://34.65.166.135:8888/SoloProj/api/classes/updateClass/" + id, JSON.stringify(cla)).then(resolve => { console.log(resolve) });
-       
+          makeRequest("PUT", "http://34.65.166.135:8888/SoloProj/api/classes/updateClass/" + id, JSON.stringify(cla)).then(resolve => { 
+          window.location.href="getallClasses.html";
+        });
      }
 
      function findClass(){

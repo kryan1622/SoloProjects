@@ -34,7 +34,6 @@ function createInstructor() {
 function getAllInstructors() {
     makeRequest("GET", "http://34.65.166.135:8888/SoloProj/api/instructors/getAllInstructors").then(value => {
 
-        let data = JSON.stringify(value);
         const container = document.getElementById('instructorsTable');
     
         if (container.rows.length > 1) {

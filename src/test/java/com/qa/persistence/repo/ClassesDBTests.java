@@ -53,7 +53,7 @@ public class ClassesDBTests {
 	public void getAllClassesTest() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Classes> classes = new ArrayList<Classes>();
-		classes.add(new Classes(1,"Zumba", null));
+		classes.add(new Classes(1,"Zumba"));
 		Mockito.when(query.getResultList()).thenReturn(classes);
 		Assert.assertEquals(CLASS1,repo.getAllClasses());
 		
@@ -62,7 +62,7 @@ public class ClassesDBTests {
 	@Test
 	public void findClassTest() {
 		List<Classes> classes = new ArrayList<Classes>();
-		Classes class1 = new Classes(1, "Balletfit", null);
+		Classes class1 = new Classes(1, "Balletfit");
 		classes.add(class1);
 		Mockito.when(manager.find(Classes.class,1)).thenReturn(class1);
 		Assert.assertEquals(CLASSOBJECT, repo.findClass(1));
@@ -78,7 +78,7 @@ public class ClassesDBTests {
 		@Test
 		public void deleteClassTest() {
 			List<Classes> classes = new ArrayList<>();
-			Classes class1 = new Classes(1,"Zumba", null);
+			Classes class1 = new Classes(1,"Zumba");
 			classes.add(class1);
 			Mockito.when(manager.find(Classes.class,1)).thenReturn(class1);
 			Mockito.when(manager.contains(class1)).thenReturn(true);
@@ -89,7 +89,7 @@ public class ClassesDBTests {
 		public void updateClassTest() {
 			Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 			List<Classes> classes = new ArrayList<Classes>();
-			Classes class2 = new Classes(1, "Zumba", null);
+			Classes class2 = new Classes(1, "Zumba");
 			Mockito.when(query.getResultList()).thenReturn(classes);
 			Mockito.when(manager.find(Classes.class,1)).thenReturn(class2);
 			String reply = repo.updateClass(1, j1.getJSONForObject(class2));
@@ -100,7 +100,7 @@ public class ClassesDBTests {
 		public void updateClassThatDoesntExistTest() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Classes> classes = new ArrayList<Classes>();
-		Classes class3 = new Classes(1, "Balletfit", null);
+		Classes class3 = new Classes(1, "Balletfit");
 		Mockito.when(query.getResultList()).thenReturn(classes);
 		Mockito.when(manager.find(Classes.class,1)).thenReturn(class3);
 		String reply = repo.updateClass(3, j1.getJSONForObject(class3));

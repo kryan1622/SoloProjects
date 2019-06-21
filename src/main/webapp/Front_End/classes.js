@@ -26,7 +26,7 @@ function createClass() {
             instructorid: Number(document.getElementById('instructorid').value)
         } 
     };
-    makeRequest("Post", "http://34.65.166.135:8888/SoloProj/api/classes/createClass", JSON.stringify(cla)).then(value => { console.log(resolve) 
+    makeRequest("Post", "http://34.65.166.135:8888/SoloProj/api/classes/createClass", JSON.stringify(cla)).then(value => {
 document.getElementById("result").innerText=value;
 });
 }

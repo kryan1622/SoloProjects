@@ -4,7 +4,7 @@ function createMember() {
         firstname: document.getElementById('firstname').value,
         lastname: document.getElementById('lastname').value
     };
-    makeRequest("Post", "http://34.65.166.135:8888/SoloProj/api/members/createMember", JSON.stringify(user)).then(resolve => {  
+    makeRequest("Post", path + "members/createMember", JSON.stringify(user)).then(resolve => {  
  window.location.href="getAllMembers.html";
    
 });
@@ -12,7 +12,7 @@ function createMember() {
 
 
 function getAllMembers() {
-    makeRequest("GET", "http://34.65.166.135:8888/SoloProj/api/members/getAllMembers").then(value => {
+    makeRequest("GET", path + "members/getAllMembers").then(value => {
 
         const container = document.getElementById('membersTable');
 
@@ -68,7 +68,7 @@ const detailButtonHandler = () => {
         const memberiq = sessionStorage.getItem('memberid');
 
 
-        makeRequest("DELETE", "http://34.65.166.135:8888/SoloProj/api/members/deleteMember/" + memberiq).then(resolve => { console.log(resolve) });
+        makeRequest("DELETE", path + "members/deleteMember/" + memberiq).then(resolve => { console.log(resolve) });
 
 }
 
@@ -78,7 +78,7 @@ const detailButtonHandler = () => {
             lastname: document.getElementById('lastname2').value
         };
         let id = Number(document.getElementById("memberid").value);
-        makeRequest("PUT", "http://34.65.166.135:8888/SoloProj/api/members/updateMember/" + id, JSON.stringify(user)).then(resolve => {  
+        makeRequest("PUT", path + "members/updateMember/" + id, JSON.stringify(user)).then(resolve => {  
         window.location.href="getAllMembers.html";
     });
     }
@@ -86,7 +86,7 @@ const detailButtonHandler = () => {
 
     function findMember(){
         let id=Number(document.getElementById('memberid3').value)
-       makeRequest("GET", "http://34.65.166.135:8888/SoloProj/api/members/findMember/" +id).then(value => {
+       makeRequest("GET", path + "members/findMember/" +id).then(value => {
     
        const container = document.getElementById('membersTable');
 

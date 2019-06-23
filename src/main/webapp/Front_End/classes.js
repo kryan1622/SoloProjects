@@ -14,7 +14,7 @@ window.location.href="getallClasses.html";
 
 
 function getAllClasses() {
-    makeRequest("GET", "http://34.65.166.135:8888/SoloProj/api/classes/getAllClasses").then(value => {
+    makeRequest("GET", path + "/classes/getAllClasses").then(value => {
         const container = document.getElementById('classTable');
     
 
@@ -75,7 +75,7 @@ function getAllClasses() {
          const classiq = sessionStorage.getItem('classid');
 
 
-         makeRequest("GET", "http://34.65.166.135:8888/SoloProj/api/classes/getAllClasses").then(value => {
+         makeRequest("GET", path + "classes/getAllClasses").then(value => {
             const container = document.getElementById('instructorTable');
     
              if (container.rows.length > 1) {
@@ -114,7 +114,7 @@ function getAllClasses() {
        
                 const classiq = sessionStorage.getItem('classid');
 
-                makeRequest("DELETE", "http://34.65.166.135:8888/SoloProj/api/classes/deleteClass/" + classiq).then(resolve => { console.log(resolve) });
+                makeRequest("DELETE", path + "classes/deleteClass/" + classiq).then(resolve => { console.log(resolve) });
 
             }
         
@@ -126,14 +126,14 @@ function getAllClasses() {
               }
           };
           let id = Number(document.getElementById("classid2").value);
-          makeRequest("PUT", "http://34.65.166.135:8888/SoloProj/api/classes/updateClass/" + id, JSON.stringify(cla)).then(resolve => { 
+          makeRequest("PUT", path + "classes/updateClass/" + id, JSON.stringify(cla)).then(resolve => { 
           window.location.href="getallClasses.html";
         });
      }
 
      function findClass(){
          let id=Number(document.getElementById('classid3').value)
-        makeRequest("GET", "http://34.65.166.135:8888/SoloProj/api/classes/findClass/" +id).then(value => {
+        makeRequest("GET", path + "classes/findClass/" +id).then(value => {
      
         const container = document.getElementById('classTable');
 

@@ -1,4 +1,5 @@
-const path = "34.65.166.135:8888/SoloProj/api/";
+const path = "http://34.65.166.135:8888/SoloProj/api/";
+
 
 function makeRequest(method, url, body) {
 

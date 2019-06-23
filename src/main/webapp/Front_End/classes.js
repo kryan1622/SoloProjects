@@ -1,23 +1,4 @@
-function makeRequest(method, url, body) {
 
-    return new Promise(function (resolve, reject) {
-        const req = new XMLHttpRequest
-
-        req.open(method, url);
-        req.send(body);
-        req.onload = function () {
-            const data = JSON.parse(req.responseText);
-            if (req.status >= 200 || req.status < 300) {
-                resolve(data);
-            } else {
-                reject(Error(req.statusText));
-            }
-        };
-        req.onerror = function () {
-            reject(Error("Network Error"))
-        }
-    })
-}
 
 function createClass() {
     let cla = {
@@ -26,7 +7,7 @@ function createClass() {
             instructorid: Number(document.getElementById('instructorid').value)
         } 
     };
-    makeRequest("Post", "http://34.65.166.135:8888/SoloProj/api/classes/createClass", JSON.stringify(cla)).then(resolve => {
+    makeRequest("Post", path + "classes/createClass", JSON.stringify(cla)).then(resolve => {
 window.location.href="getallClasses.html";
 });
 }

@@ -1,14 +1,10 @@
 package com.qa.persistence.repo;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -34,37 +30,39 @@ public class InstructorsDBTests {
 	@Mock
 	private Query query;
 	
-	private static final String INSTRUCTOR1 = "[{\"instructorid\":1,\"firstname\":\"Josh\",\"lastname\":\"Brookes\"}]";
-    private static final String INSTRUCTOROBJECT = "{\"instructorid\":1,\"firstname\":\"Josh\",\"lastname\":\"Brookes\"}";	
+	private Instructors instructor;
+	
+		
 	@Before 
 	public void setup() {
 		repo.setManager(manager);
 		j1 = new JSONUtil();
 		repo.setJ1(j1);
+		instructor = new Instructors(1, "Josh", "Brookes");
+		
 	}
 	
 	@Test
 	public void getAllInstructorsTest() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Instructors> instructors = new ArrayList<Instructors>();
-		instructors.add(new Instructors(1,"Josh","Brookes"));
+		instructors.add(instructor);
 		Mockito.when(query.getResultList()).thenReturn(instructors);
-		Assert.assertEquals(INSTRUCTOR1,repo.getAllInstructors());
+		Assert.assertEquals(Constants.INSTRUCTOR1,repo.getAllInstructors());
 		
 	}
 	
 	@Test
 	public void findInstructorTest() {
 		List<Instructors> instructors = new ArrayList<Instructors>();
-		Instructors instructor = new Instructors(1, "Josh","Brookes");
 		instructors.add(instructor);
 		Mockito.when(manager.find(Instructors.class,1)).thenReturn(instructor);
-		Assert.assertEquals(INSTRUCTOROBJECT, repo.findInstructor(1));
+		Assert.assertEquals(Constants.INSTRUCTOROBJECT, repo.findInstructor(1));
 	}
 	
 	@Test
 	public void createInstructorTest() {
-		Assert.assertEquals("{\"message\": \"Instructor has been successfully added\"}",repo.createInstructor(INSTRUCTOROBJECT));
+		Assert.assertEquals("{\"message\": \"Instructor has been successfully added\"}",repo.createInstructor(Constants.INSTRUCTOROBJECT));
 	}
 	
 	
@@ -72,7 +70,6 @@ public class InstructorsDBTests {
 	public void updateInstructorTest() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Instructors> instructors = new ArrayList<Instructors>();
-		Instructors instructor = new Instructors(1, "Josh","Brookes");
 		Mockito.when(query.getResultList()).thenReturn(instructors);
 		Mockito.when(manager.find(Instructors.class,1)).thenReturn(instructor);
 		String reply = repo.updateInstructor(1, j1.getJSONForObject(instructor));
@@ -83,7 +80,6 @@ public class InstructorsDBTests {
 	public void updateInstructorThatDoesntExistTest() {
 	Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 	List<Instructors> instructors = new ArrayList<Instructors>();
-	Instructors instructor = new Instructors(1, "Josh","Brookes");
 	Mockito.when(query.getResultList()).thenReturn(instructors);
 	Mockito.when(manager.find(Instructors.class,1)).thenReturn(instructor);
 	String reply = repo.updateInstructor(3, j1.getJSONForObject(instructor));

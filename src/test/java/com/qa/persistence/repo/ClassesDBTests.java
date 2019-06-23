@@ -37,8 +37,8 @@ public class ClassesDBTests {
 		@Mock
 		private Query query;
 	
-		private static final String CLASS1 = "[{\"classid\":1,\"classname\":\"Zumba\"}]";
-	    private static final String CLASSOBJECT = "{\"classid\":1,\"classname\":\"Balletfit\"}";
+		private Classes class1;
+		private Classes class2;
 		
 		
 	@Before 
@@ -46,6 +46,8 @@ public class ClassesDBTests {
 		repo.setManager(manager);
 		j1 = new JSONUtil();
 		repo.setJ1(j1);
+		class1 = new Classes(1, "Zumba");
+		class2 = new Classes(1, "Balletfit");
 	}
 		
 	
@@ -53,32 +55,30 @@ public class ClassesDBTests {
 	public void getAllClassesTest() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Classes> classes = new ArrayList<Classes>();
-		classes.add(new Classes(1,"Zumba"));
+		classes.add(class1);
 		Mockito.when(query.getResultList()).thenReturn(classes);
-		Assert.assertEquals(CLASS1,repo.getAllClasses());
+		Assert.assertEquals(Constants.CLASS1,repo.getAllClasses());
 		
 	}
 	
 	@Test
 	public void findClassTest() {
 		List<Classes> classes = new ArrayList<Classes>();
-		Classes class1 = new Classes(1, "Balletfit");
-		classes.add(class1);
-		Mockito.when(manager.find(Classes.class,1)).thenReturn(class1);
-		Assert.assertEquals(CLASSOBJECT, repo.findClass(1));
+		classes.add(class2);
+		Mockito.when(manager.find(Classes.class,1)).thenReturn(class2);
+		Assert.assertEquals(Constants.CLASSOBJECT, repo.findClass(1));
 	}
 
 
 		@Test
 		public void createMemberTest() {
-		Assert.assertEquals("{\"message\": \"Class has been successfully added\"}",repo.createClass(CLASSOBJECT));
+		Assert.assertEquals("{\"message\": \"Class has been successfully added\"}",repo.createClass(Constants.CLASSOBJECT));
 		}
 		
 		
 		@Test
 		public void deleteClassTest() {
 			List<Classes> classes = new ArrayList<>();
-			Classes class1 = new Classes(1,"Zumba");
 			classes.add(class1);
 			Mockito.when(manager.find(Classes.class,1)).thenReturn(class1);
 			Mockito.when(manager.contains(class1)).thenReturn(true);
@@ -89,10 +89,9 @@ public class ClassesDBTests {
 		public void updateClassTest() {
 			Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 			List<Classes> classes = new ArrayList<Classes>();
-			Classes class2 = new Classes(1, "Zumba");
 			Mockito.when(query.getResultList()).thenReturn(classes);
-			Mockito.when(manager.find(Classes.class,1)).thenReturn(class2);
-			String reply = repo.updateClass(1, j1.getJSONForObject(class2));
+			Mockito.when(manager.find(Classes.class,1)).thenReturn(class1);
+			String reply = repo.updateClass(1, j1.getJSONForObject(class1));
 			Assert.assertEquals("{\"message\": \"Class successfully updated\"}",reply);
 		}
 		
@@ -100,10 +99,9 @@ public class ClassesDBTests {
 		public void updateClassThatDoesntExistTest() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Classes> classes = new ArrayList<Classes>();
-		Classes class3 = new Classes(1, "Balletfit");
 		Mockito.when(query.getResultList()).thenReturn(classes);
-		Mockito.when(manager.find(Classes.class,1)).thenReturn(class3);
-		String reply = repo.updateClass(3, j1.getJSONForObject(class3));
+		Mockito.when(manager.find(Classes.class,1)).thenReturn(class1);
+		String reply = repo.updateClass(3, j1.getJSONForObject(class1));
 		Assert.assertEquals("{\"message\": \"No class found with this id\"}",reply);
 	}	
 		

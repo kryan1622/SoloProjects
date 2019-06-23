@@ -15,37 +15,38 @@ public class InstructorsMapTests {
 	@Before
 	public void setup() {
 	imr = new InstructorMapRepository();
-	in1 = new Instructors(1, "Monica", "Mistry");
-	in2= new Instructors(2, "Josh", "Brookes");
+	in1= new Instructors(1, "Josh", "Brookes");
+	in2 = new Instructors(2, "Monica", "Mistry");
+	
 }
 	
 	@Test
 	public void addInstructorTest() {
-		imr.createInstructor("{\"instructorid\":1,\"firstname\":\"Monica\",\"lastname\":\"Mistry\"}");
+		imr.createInstructor(Constants.INSTRUCTOROBJECT);
 		assertEquals(1, imr.getinstructorsMap().size());
-		assertEquals("Monica", imr.getinstructorsMap().get(1).getFirstname());
+		assertEquals("Josh", imr.getinstructorsMap().get(1).getFirstname());
 	}	
 	
 	@Test
 	public void add2InstructorsTest() {
-		imr.createInstructor("{\"instructorid\":1,\"firstname\":\"Monica\",\"lastname\":\"Mistry\"}");
-		imr.createInstructor("{\"instructorid\":2,\"firstname\":\"Josh\",\"lastname\":\"Brookes\"}");
+		imr.createInstructor(Constants.INSTRUCTOROBJECT);
+		imr.createInstructor(Constants.INSTRUCTOR2OBJECT);
 		assertEquals(2, imr.getinstructorsMap().size());
-		assertEquals("Josh", imr.getinstructorsMap().get(2).getFirstname());
+		assertEquals("Monica", imr.getinstructorsMap().get(2).getFirstname());
 	}
 	
 
 	@Test
 	public void getAllInstructors() {
-		imr.createInstructor("{\"instructorid\":1,\"firstname\":\"Monica\",\"lastname\":\"Mistry\"}");
-		imr.createInstructor("{\"instructorid\":2,\"firstname\":\"Josh\",\"lastname\":\"Brookes\"}");
-		assertEquals("[{\"instructorid\":1,\"firstname\":\"Monica\",\"lastname\":\"Mistry\"},{\"instructorid\":2,\"firstname\":\"Josh\",\"lastname\":\"Brookes\"}]",imr.getAllInstructors());
+		imr.createInstructor(Constants.INSTRUCTOROBJECT);
+		imr.createInstructor(Constants.INSTRUCTOR2OBJECT);
+		assertEquals("[{\"instructorid\":1,\"firstname\":\"Josh\",\"lastname\":\"Brookes\"},{\"instructorid\":2,\"firstname\":\"Monica\",\"lastname\":\"Mistry\"}]",imr.getAllInstructors());
 	}
 	
 	@Test
 	public void findInstructor() {
-		imr.createInstructor("{\"instructorid\":1,\"firstname\":\"Monica\",\"lastname\":\"Mistry\"}");
-		assertEquals("{\"instructorid\":1,\"firstname\":\"Monica\",\"lastname\":\"Mistry\"}",imr.findInstructor(1));
+		imr.createInstructor(Constants.INSTRUCTOROBJECT);
+		assertEquals(Constants.INSTRUCTOROBJECT,imr.findInstructor(1));
 	}
 	
 	@Test

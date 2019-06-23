@@ -20,15 +20,15 @@ public class MembersMapTests {
 	
 	@Test
 	public void addMemberTest() {
-		mmr.createMember("{\"memberid\":1,\"firstname\":\"Krystal\",\"lastname\":\"Ryan\"}");
+		mmr.createMember(Constants.MEMBEROBJECT);
 		assertEquals(1, mmr.getmembersMap().size());
 		assertEquals("Krystal", mmr.getmembersMap().get(1).getFirstname());
 	}	
 	
 	@Test
 	public void add2MembersTest() {
-		mmr.createMember("{\"memberid\":1,\"firstname\":\"Krystal\",\"lastname\":\"Ryan\"}");
-		mmr.createMember("{\"memberid\":2,\"firstname\":\"Jack\",\"lastname\":\"Ryan\"}");
+		mmr.createMember(Constants.MEMBEROBJECT);
+		mmr.createMember(Constants.MEMBER2OBJECT);
 		assertEquals(2, mmr.getmembersMap().size());
 		assertEquals("Jack", mmr.getmembersMap().get(2).getFirstname());
 	}
@@ -36,15 +36,15 @@ public class MembersMapTests {
 
 	@Test
 	public void getAllMembers() {
-		mmr.createMember("{\"memberid\":1,\"firstname\":\"Krystal\",\"lastname\":\"Ryan\"}");
-		mmr.createMember("{\"memberid\":2,\"firstname\":\"Jack\",\"lastname\":\"Ryan\"}");	
+		mmr.createMember(Constants.MEMBEROBJECT);
+		mmr.createMember(Constants.MEMBER2OBJECT);	
 		assertEquals("[{\"memberid\":1,\"firstname\":\"Krystal\",\"lastname\":\"Ryan\"},{\"memberid\":2,\"firstname\":\"Jack\",\"lastname\":\"Ryan\"}]",mmr.getAllMembers());
 	}
 	
 	@Test
 	public void findMember() {
-		mmr.createMember("{\"memberid\":1,\"firstname\":\"Krystal\",\"lastname\":\"Ryan\"}");
-		assertEquals("{\"memberid\":1,\"firstname\":\"Krystal\",\"lastname\":\"Ryan\"}",mmr.findMember(1));
+		mmr.createMember(Constants.MEMBEROBJECT);
+		assertEquals(Constants.MEMBEROBJECT,mmr.findMember(1));
 	}
 	
 	@Test

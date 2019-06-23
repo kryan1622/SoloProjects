@@ -34,13 +34,14 @@ public class MembersDBTests {
 	@Mock
 	private Query query;
 	
-	private static final String MEMBER1 = "[{\"memberid\":1,\"firstname\":\"Krystal\",\"lastname\":\"Ryan\"}]";
-    private static final String MEMBEROBJECT = "{\"memberid\":1,\"firstname\":\"Krystal\",\"lastname\":\"Ryan\"}";	
+	private Members member;
+		
 	@Before 
 	public void setup() {
 		repo.setManager(manager);
 		j1 = new JSONUtil();
 		repo.setJ1(j1);
+		member = new Members(1, "Krystal", "Ryan");
 	}
 	
 	
@@ -48,25 +49,24 @@ public class MembersDBTests {
 	public void getAllMembersTest() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Members> members = new ArrayList<Members>();
-		members.add(new Members(1,"Krystal","Ryan"));
+		members.add(member);
 		Mockito.when(query.getResultList()).thenReturn(members);
-		Assert.assertEquals(MEMBER1,repo.getAllMembers());
+		Assert.assertEquals(Constants.MEMBER1,repo.getAllMembers());
 		
 	}
 	
 	@Test
 	public void findMemberTest() {
-		List<Members> members = new ArrayList<Members>();
-		Members member = new Members(1, "Krystal","Ryan");
+		List<Members> members = new ArrayList<Members>();;
 		members.add(member);
 		Mockito.when(manager.find(Members.class,1)).thenReturn(member);
-		Assert.assertEquals(MEMBEROBJECT, repo.findMember(1));
+		Assert.assertEquals(Constants.MEMBEROBJECT, repo.findMember(1));
 	}
 	
 	
 	@Test
 	public void createMemberTest() {
-		Assert.assertEquals("{\"message\": \"Member has been successfully added\"}",repo.createMember(MEMBEROBJECT));
+		Assert.assertEquals("{\"message\": \"Member has been successfully added\"}",repo.createMember(Constants.MEMBEROBJECT));
 	}
 	
 	
@@ -74,7 +74,6 @@ public class MembersDBTests {
 	@Test
 	public void deleteMemberTest() {
 		List<Members> members = new ArrayList<>();
-		Members member = new Members(1,"Krystal", "Ryan");
 		members.add(member);
 		Mockito.when(manager.find(Members.class,1)).thenReturn(member);
 		Mockito.when(manager.contains(member)).thenReturn(true);
@@ -87,7 +86,6 @@ public class MembersDBTests {
 	public void updateMemberTest() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Members> members = new ArrayList<Members>();
-		Members member = new Members(1, "Krystal","Ryan");
 		Mockito.when(query.getResultList()).thenReturn(members);
 		Mockito.when(manager.find(Members.class,1)).thenReturn(member);
 		String reply = repo.updateMember(1, j1.getJSONForObject(member));
@@ -98,7 +96,6 @@ public class MembersDBTests {
 	public void updateMemberThatDoesntExistTest() {
 	Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 	List<Members> members = new ArrayList<Members>();
-	Members member = new Members(1, "Krystal","Ryan");
 	Mockito.when(query.getResultList()).thenReturn(members);
 	Mockito.when(manager.find(Members.class,1)).thenReturn(member);
 	String reply = repo.updateMember(3, j1.getJSONForObject(member));

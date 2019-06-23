@@ -22,30 +22,30 @@ public class ClassesMapTests {
 	
 	@Test
 	public void addClassTest() {
-		cmr.createClass("{\"classid\":1,\"classname\":\"Balletfit\"}");
+		cmr.createClass(Constants.CLASSOBJECT);
 		assertEquals(1, cmr.getclassMap().size());
 		assertEquals("Balletfit", cmr.getclassMap().get(1).getClassname());
 	}	
 	
 	@Test
 	public void add2ClassesTest() {
-		cmr.createClass("{\"classid\":1,\"classname\":\"Balletfit\"}");
-		cmr.createClass("{\"classid\":2,\"classname\":\"Zumba\"}");
+		cmr.createClass(Constants.CLASSOBJECT);
+		cmr.createClass(Constants.CLASSOBJECT2);
 		assertEquals(2, cmr.getclassMap().size());
 		assertEquals("Zumba", cmr.getclassMap().get(2).getClassname());
 	}
 	
 	@Test
 	public void getAllMembers() {
-		cmr.createClass("{\"classid\":1,\"classname\":\"Balletfit\"}");
-		cmr.createClass("{\"classid\":2,\"classname\":\"Zumba\"}");	
+		cmr.createClass(Constants.CLASSOBJECT);
+		cmr.createClass(Constants.CLASSOBJECT2);	
 		assertEquals("[{\"classid\":1,\"classname\":\"Balletfit\"},{\"classid\":2,\"classname\":\"Zumba\"}]",cmr.getAllClasses());
 	}
 	
 	@Test
 	public void findClass() {
-		cmr.createClass("{\"classid\":1,\"classname\":\"Balletfit\"}");
-		assertEquals("{\"classid\":1,\"classname\":\"Balletfit\"}",cmr.findClass(1));
+		cmr.createClass(Constants.CLASSOBJECT);
+		assertEquals(Constants.CLASSOBJECT,cmr.findClass(1));
 	}
 	
 	@Test

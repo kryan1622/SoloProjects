@@ -14,7 +14,7 @@ window.location.href="getallClasses.html";
 
 
 function getAllClasses() {
-    makeRequest("GET", path + "/classes/getAllClasses").then(value => {
+    makeRequest("GET", path + "classes/getAllClasses").then(value => {
         const container = document.getElementById('classTable');
     
 

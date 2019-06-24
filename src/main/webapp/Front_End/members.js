@@ -5,7 +5,7 @@ function createMember() {
         lastname: document.getElementById('lastname').value
     };
     makeRequest("Post", path + "members/createMember", JSON.stringify(user)).then(resolve => {  
- window.location.href="getAllMembers.html";
+ window.location.href="getallMembers.html";
    
 });
 }
@@ -79,7 +79,7 @@ const detailButtonHandler = () => {
         };
         let id = Number(document.getElementById("memberid").value);
         makeRequest("PUT", path + "members/updateMember/" + id, JSON.stringify(user)).then(resolve => {  
-        window.location.href="getAllMembers.html";
+        window.location.href="getallMembers.html";
     });
     }
 

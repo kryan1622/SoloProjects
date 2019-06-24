@@ -81,8 +81,8 @@ function getAllClasses() {
              if (container.rows.length > 1) {
     
                  let tableSize = container.rows.length;
-                 for (i = tableSize; i > 1; i--) {
-                     container.deleteRow(i - 1);
+                 for (let l = tableSize; l > 1; l--) {
+                     container.deleteRow(l - 1);
                  }
     
             }
@@ -140,7 +140,7 @@ function getAllClasses() {
         if (container.rows.length > 1) {
 
             let tableSize = container.rows.length;
-            for (k = tableSize; k > 1; k--) {
+            for (let k = tableSize; k > 1; k--) {
                 container.deleteRow(k - 1);
             }
 

@@ -93,7 +93,7 @@ const detailButtonHandler = () => {
        if (container.rows.length > 1) {
 
            let tableSize = container.rows.length;
-           for (k = tableSize; k > 1; k--) {
+           for (let k = tableSize; k > 1; k--) {
                container.deleteRow(k - 1);
            }
 
